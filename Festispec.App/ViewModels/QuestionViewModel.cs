@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;ge
-using Festispec.App.Annotations;
+using Festispec.App.Repositories;
 using Festispec.Database.Models;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace Festispec.App.ViewModels
 {
@@ -54,14 +52,23 @@ namespace Festispec.App.ViewModels
 
         private readonly Question _question;
         public event PropertyChangedEventHandler PropertyChanged;
+        public RelayCommand SaveQuestionCommand { get; private set; }
+
+        private IFormsRepository formsRepository;
         public QuestionViewModel(Question question)
         {
+            formsRepository = new FormsTestRepository();
             _question = question;
 
             QuestionItems = new ObservableCollection<QuestionItemViewModel>(question.QuestionItem.Select(o => new QuestionItemViewModel(o)));
+            SaveQuestionCommand = new RelayCommand(SaveQuestion);
         }
 
-        [NotifyPropertyChangedInvocator]
+        private void SaveQuestion()
+        {
+
+        }
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

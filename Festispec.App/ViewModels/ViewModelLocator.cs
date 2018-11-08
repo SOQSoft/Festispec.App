@@ -25,10 +25,15 @@ namespace Festispec.App.ViewModels
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<FormOverviewViewModel>();
+
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
-      
+        public FormOverviewViewModel FormOverview => ServiceLocator.Current.GetInstance<FormOverviewViewModel>();
+        public FormViewModel FormViewModel => FormOverview.SelectedForm;
+        public QuestionViewModel Question => FormViewModel.SelectedQuestion;
+
         public static void Cleanup()
         {
             
