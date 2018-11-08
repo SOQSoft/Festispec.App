@@ -19,7 +19,7 @@ namespace Festispec.App.ViewModels
         
         public MainViewModel()
         {
-   
+        
         }
     }
 }
