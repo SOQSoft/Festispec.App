@@ -4,9 +4,11 @@
 ## Installation
 
  **1.**  Clone de repository  using 
-`` 
+ 
+```cmd
 git clone --recurse-submodules -j8 https://github.com/SOQSoft/Festispec.App.git
 ```
+
  
 **2.** Open project in visual studio
 
