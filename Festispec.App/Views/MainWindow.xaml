@@ -17,7 +17,7 @@
         <Button Command="{Binding TemplatePageBtn}" Content="Templates" HorizontalAlignment="Left" Height="60" Margin="1321.68,10,0,0" VerticalAlignment="Top" Width="248.32" FontSize="24"/>
 
         <TextBlock HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" Text="FestiSpec" VerticalAlignment="Top" Width="300" FontSize="68" Foreground="Black" Margin="30,-14,0,0"/>
-        <Frame Content="ApplicationFrame" HorizontalAlignment="Left" Height="642.5" Margin="30,126.5,0,0" VerticalAlignment="Top" Width="1562"/>
+        <Frame Content="ApplicationFrame" HorizontalAlignment="Left" Height="642.5" Margin="30,126.5,0,0" VerticalAlignment="Top" Width="1562" Source="/Festispec.App;component/Views/CreateQuestion.xaml"/>
 
 
 
