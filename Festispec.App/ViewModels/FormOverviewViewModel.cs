@@ -21,7 +21,8 @@ namespace Festispec.App.ViewModels
         public FormOverviewViewModel()
         {
             formRepository = new FormsTestRepository();
-            Forms = new ObservableCollection<FormViewModel>(formRepository.GetAll().Select(o => new FormViewModel(o)));
+            Forms = new ObservableCollection<FormViewModel>(formRepository.GetAll().Select(o => new FormViewModel(o)).ToList());
+            SelectedForm = Forms.FirstOrDefault();
         }
 		public void CanEditOrRemove()
 		{

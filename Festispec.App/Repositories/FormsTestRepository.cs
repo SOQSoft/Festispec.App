@@ -10,6 +10,7 @@ namespace Festispec.App.Repositories
     public class FormsTestRepository : IFormsRepository
     {
         private static List<Form> Forms { get; set; } = new List<Form>();
+        private static bool init = false;
         public FormsTestRepository()
         {
             InitializeData();
@@ -17,12 +18,15 @@ namespace Festispec.App.Repositories
 
         private void InitializeData()
         {
+            if (init)
+                return;
+            init = true;
+
             int id = 0;
             int qid = 0;
 
             Form form = new Form();
             form.Id = id++;
-            form.Name = "Festival xxxx";
             form.Question.Add(new Question()
             {
                 Id = qid++,
@@ -30,6 +34,15 @@ namespace Festispec.App.Repositories
                 Form = form,
                 Description = "lolxd",
                 Text = "Wanneer kwamen koeien",
+                QuestionType = 0, // TODO: Adding enums back;
+            });
+            form.Question.Add(new Question()
+            {
+                Id = qid++,
+                FormId = form.Id,
+                Form = form,
+                Description = "lolxd2",
+                Text = "Wanneer kwamen koeie2n2",
                 QuestionType = 0, // TODO: Adding enums back;
             });
             Forms.Add(form);

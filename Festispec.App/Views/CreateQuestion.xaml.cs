@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Festispec.App.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,43 +24,10 @@ namespace Festispec.App.Views
     /// </summary>
     public partial class CreateQuestion : Page
     {
-        private int count;
         public CreateQuestion()
         {
             InitializeComponent();
         }
 
-        public static T TrycloneElement<T>(T orig)
-        {
-            try
-            {
-                string s = XamlWriter.Save(orig);
-
-                StringReader stringReader = new StringReader(s);
-
-                XmlReader xmlReader = XmlTextReader.Create(stringReader, new XmlReaderSettings());
-                XmlReaderSettings sx = new XmlReaderSettings();
-
-                object x = XamlReader.Load(xmlReader);
-                return (T)x;
-            }
-            catch
-            {
-                return (T)((object)null);
-            }
-
-        }
-
-        private void addQuestion(object sender, RoutedEventArgs e)
-        {
-            TabItem tab2 = TrycloneElement(defaultQuestion);
-
-            if (tab2 != null)
-            {
-                tab2.Visibility = Visibility.Visible;
-                main.Items.Add(tab2);
-            }
-
-        }
     }
 }

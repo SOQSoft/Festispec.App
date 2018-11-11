@@ -2,8 +2,8 @@
              xmlns:viewModels="clr-namespace:Festispec.App.ViewModels">
   <Application.Resources>
     <ResourceDictionary>
-        <!--<viewModels:ViewModelLocator xmlns:vm="clr-namespace:Festispec.App"
-                             x:Key="Locator" />-->
-    </ResourceDictionary>
+            <viewModels:ViewModelLocator xmlns:vm="clr-namespace:Festispec.App"
+                             x:Key="Locator" />
+        </ResourceDictionary>
   </Application.Resources>
 </Application>
