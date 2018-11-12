@@ -1,5 +1,4 @@
-﻿using Festispec.App.Interfaces;
-using Festispec.App.Repositories;
+﻿using Festispec.App.Repositories;
 using Festispec.App.Views;
 using Festispec.Database.Models;
 using GalaSoft.MvvmLight;

@@ -74,7 +74,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Interfaces\ICreateQuestion.cs" />
+    <Compile Include="Helpers\QuestionTypeToControlConverter.cs" />
     <Compile Include="Repositories\FormsTestRepository.cs" />
     <Compile Include="Repositories\IFormsRepository.cs" />
     <Compile Include="ViewModels\FormOverviewViewModel.cs" />
@@ -85,6 +85,12 @@
     <Compile Include="ViewModels\QuestionViewModel.cs" />
     <Compile Include="ViewModels\TemplateOverviewViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\Controls\CreateMultiplechoice.xaml.cs">
+      <DependentUpon>CreateMultiplechoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\EmptyControl.xaml.cs">
+      <DependentUpon>EmptyControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreateQuestion.xaml.cs">
       <DependentUpon>CreateQuestion.xaml</DependentUpon>
     </Compile>
@@ -131,6 +137,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\Controls\CreateMultiplechoice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\EmptyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreateQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

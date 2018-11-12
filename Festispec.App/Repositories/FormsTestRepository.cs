@@ -1,4 +1,5 @@
 ﻿using Festispec.Database.Models;
+using Festispec.Domain.src;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,22 @@ namespace Festispec.App.Repositories
                 Description = "lolxd2",
                 Text = "Wanneer kwamen koeie2n2",
                 QuestionType = 0, // TODO: Adding enums back;
+            });
+            form.Question.Add(new Question()
+            {
+                Id = qid++,
+                FormId = form.Id,
+                Form = form,
+                Description = "lolxd2",
+                Text = "Wanneer kwamen koeie2n2",
+                QuestionType = QuestionType.Multiplechoice,
+                QuestionItem = new List<QuestionItem>()
+                {
+                    new QuestionItem()
+                    {
+                        Body = "OOF"
+                    }
+                }
             });
             Forms.Add(form);
 
