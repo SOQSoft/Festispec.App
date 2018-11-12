@@ -18,9 +18,9 @@ namespace Festispec.App.Views.Controls
     /// <summary>
     /// Interaction logic for CreateNumerical.xaml
     /// </summary>
-    public partial class CreateMultiplechoice : UserControl
+    public partial class CreateOptions : UserControl
     {
-        public CreateMultiplechoice()
+        public CreateOptions()
         {
             InitializeComponent();
         }

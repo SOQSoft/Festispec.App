@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace Festispec.App.Views.Controls
 {
     /// <summary>
-    /// Interaction logic for CreateNumerical.xaml
+    /// Interaction logic for CreateTable.xaml
     /// </summary>
-    public partial class CreateMultiplechoice : UserControl
+    public partial class CreateTable : UserControl
     {
-        public CreateMultiplechoice()
+        public CreateTable()
         {
             InitializeComponent();
         }
-
-        
     }
 }

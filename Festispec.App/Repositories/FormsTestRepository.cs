@@ -1,5 +1,6 @@
 ﻿using Festispec.Database.Models;
 using Festispec.Domain.src;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,8 +33,7 @@ namespace Festispec.App.Repositories
             {
                 Id = qid++,
                 FormId = form.Id,
-                Form = form,
-                Description = "lolxd",
+                Description = "lolxd1",
                 Text = "Wanneer kwamen koeien",
                 QuestionType = 0, // TODO: Adding enums back;
             });
@@ -41,7 +41,6 @@ namespace Festispec.App.Repositories
             {
                 Id = qid++,
                 FormId = form.Id,
-                Form = form,
                 Description = "lolxd2",
                 Text = "Wanneer kwamen koeie2n2",
                 QuestionType = 0, // TODO: Adding enums back;
@@ -50,7 +49,6 @@ namespace Festispec.App.Repositories
             {
                 Id = qid++,
                 FormId = form.Id,
-                Form = form,
                 Description = "lolxd2",
                 Text = "Wanneer kwamen koeie2n2",
                 QuestionType = QuestionType.Multiplechoice,
@@ -62,7 +60,10 @@ namespace Festispec.App.Repositories
                     }
                 }
             });
+            var test = JsonConvert.SerializeObject(form);
+
             Forms.Add(form);
+
 
             form = new Form();
             form.Id = id++;
