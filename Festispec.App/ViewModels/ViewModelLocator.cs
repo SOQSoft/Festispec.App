@@ -18,20 +18,23 @@ using GalaSoft.MvvmLight.Ioc;
 
 namespace Festispec.App.ViewModels
 {
-     public class ViewModelLocator
+    public class ViewModelLocator
     {
-
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<FormOverviewViewModel>();
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
-      
+        public FormOverviewViewModel FormOverview => ServiceLocator.Current.GetInstance<FormOverviewViewModel>();
+        public FormViewModel FormViewModel => FormOverview.SelectedForm;
+        public QuestionViewModel QuestionViewmodel => FormViewModel.SelectedQuestion;
+
         public static void Cleanup()
         {
-            
+
         }
     }
 }

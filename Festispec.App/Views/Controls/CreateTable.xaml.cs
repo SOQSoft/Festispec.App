@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,24 +8,21 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Xml;
 
-namespace Festispec.App.Views
+namespace Festispec.App.Views.Controls
 {
     /// <summary>
-    /// Interaction logic for CreateQuestion.xaml
+    /// Interaction logic for CreateTable.xaml
     /// </summary>
-    public partial class CreateQuestion : Page
+    public partial class CreateTable : UserControl
     {
-        public CreateQuestion()
+        public CreateTable()
         {
             InitializeComponent();
         }
-
     }
 }
