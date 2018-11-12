@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Festispec.App.Views"
         mc:Ignorable="d"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
         Title="FestiSpec" Height="800" Width="1600" Background="#FFA8A5A5" ResizeMode="NoResize" Icon="festispec_icon.png">
     <Grid>
 
@@ -12,12 +13,12 @@
 
         <Button Command="{Binding TaskPageBtn}" Content="Opdrachten" HorizontalAlignment="Left" Height="60" Margin="370,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
         <Button Command="{Binding CustomerPageBtn}" Content="Klanten" HorizontalAlignment="Left" Height="60" Margin="607.92,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
-        <Button Command="{Binding InspectorPageBtn}" Content="Inspecteurs" HorizontalAlignment="Left" Height="60" Margin="845.84,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
+        <Button Command="{Binding AddQuestion}" Content="Nieuwe Vragenlijst" HorizontalAlignment="Left" Height="60" Margin="845.84,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
         <Button Command="{Binding QuestionPageBtn}" Content="Vragenlijsten" HorizontalAlignment="Left" Height="60" Margin="1083.76,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
         <Button Command="{Binding TemplatePageBtn}" Content="Templates" HorizontalAlignment="Left" Height="60" Margin="1321.68,10,0,0" VerticalAlignment="Top" Width="248.32" FontSize="24"/>
 
         <TextBlock HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" Text="FestiSpec" VerticalAlignment="Top" Width="300" FontSize="68" Foreground="Black" Margin="30,-14,0,0"/>
-        <Frame Content="ApplicationFrame" HorizontalAlignment="Left" Height="642.5" Margin="30,126.5,0,0" VerticalAlignment="Top" Width="1562" Source="/Festispec.App;component/Views/CreateQuestion.xaml"/>
+        <Frame Name="MainFrame" Content="ApplicationFrame" HorizontalAlignment="Left" Height="642.5" Margin="30,126.5,0,0" VerticalAlignment="Top" Width="1562" Source="{Binding DisplayPage}"/>
 
 
 
