@@ -9,11 +9,13 @@ namespace Festispec.App.ViewModels
 
 		FormViewModel SelectedForm { get; set; }
 
+        string NewFormText { get; set; }
+
 		RelayCommand EditCommand { get; }
 		RelayCommand RemoveCommand { get; }
 		RelayCommand CreateCommand { get; }
 
-		void CanEditOrRemove();
+		bool CanEditOrRemove();
 
 		void Edit();
 

@@ -56,5 +56,9 @@ namespace Festispec.App.ViewModels
             }
         }
 
+        public Form ToModel()
+        {
+            return _form;
+        }
     }
 }
