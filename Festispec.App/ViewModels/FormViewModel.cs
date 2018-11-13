@@ -73,5 +73,6 @@ namespace Festispec.App.ViewModels
             Questions.Add(new QuestionViewModel(new Question(), count++));
         }
 
-    }
+		public Form ToModel() { return _form; }
+	}
 }
