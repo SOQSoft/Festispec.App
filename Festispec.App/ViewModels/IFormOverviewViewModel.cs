@@ -8,7 +8,7 @@ namespace Festispec.App.ViewModels
 		ObservableCollection<FormViewModel> Forms { get;}
 
 		FormViewModel SelectedForm { get; set; }
-
+		string NewFormText { get; set; }
 		RelayCommand EditCommand { get; }
 		RelayCommand RemoveCommand { get; }
 		RelayCommand CreateCommand { get; }
