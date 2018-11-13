@@ -1,4 +1,5 @@
 ﻿using Festispec.App.Repositories;
+using Festispec.Database.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using System;
@@ -13,34 +14,60 @@ namespace Festispec.App.ViewModels
 
         public ObservableCollection<FormViewModel> Forms { get;}
 		public ObservableCollection<FormViewModel> Templates { get; }
-		public FormViewModel SelectedForm { get; set; }
+        public string NewFormText { get; set; }
+        public FormViewModel SelectedForm { get; set; }
 		public FormViewModel SelectedTemplate { get; set; }
 		public RelayCommand EditCommand { get; private set; }
 		public RelayCommand RemoveCommand { get; private set; }
 		public RelayCommand CreateCommand { get; private set; }
+
+
         public FormOverviewViewModel()
         {
             formRepository = new FormsTestRepository();
-            Forms = new ObservableCollection<FormViewModel>(formRepository.GetAll().Select(o => new FormViewModel(o)));
+            Forms = new ObservableCollection<FormViewModel>(formRepository.GetAll().Where(o => !o.IsTemplate).Select(o => new FormViewModel(o)));
+            Templates = new ObservableCollection<FormViewModel>(formRepository.GetAll().Where(o => o.IsTemplate).Select(o => new FormViewModel(o)));
         }
-		public void CanEditOrRemove()
+		public bool CanEditOrRemove()
 		{
+            return SelectedForm != null && Forms.Contains(SelectedForm);
 		}
 
 		public void Create()
 		{
+            Form f = new Form()
+            {
+                IsTemplate = false,
+                Name = NewFormText
+            };
+            NewFormText = null;
+            formRepository.Add(f);
+            Forms.Add(new FormViewModel(f));
 		}
 
-		public void CreateBasedOnTemplate()
-		{
-		}
+        public void CreateBasedOnTemplate()
+        {
+            if (SelectedTemplate == null) { return; }
+            Form f = new Form()
+            {
+                IsTemplate = false,
+                Name = NewFormText
+            };
+            foreach (QuestionViewModel q in SelectedTemplate.Questions) f.Question.Add(q.ToModel());
+            NewFormText = null;
+            formRepository.Add(f);
+            Forms.Add(new FormViewModel(f));
+        }
 
 		public void Edit()
 		{
+            throw new NotImplementedException();
 		}
 
 		public void Remove()
 		{
+            Forms.Remove(SelectedForm);
+            formRepository.Delete(SelectedForm.ToModel());
 		}
 	}
 }
