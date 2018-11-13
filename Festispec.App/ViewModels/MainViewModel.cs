@@ -16,10 +16,27 @@ namespace Festispec.App.ViewModels
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        
+        ///Festispec.App;component/Views/QuestionListHome.xaml
+        private string _CurrentPage;
+        public string CurrentPage { get => _CurrentPage;  private set { _CurrentPage = value; RaisePropertyChanged(); } }
         public MainViewModel()
         {
-        
+            ChangePage("FormList");
+        }
+
+        //TODO Temporary page system change to a navigation service 
+        public void ChangePage(string page)
+        {
+            switch (page)
+            {
+                case "FormList":
+                    CurrentPage = "/Views/QuestionListHome.xaml";
+                    break;
+                case "EditForm":
+                    CurrentPage = "/Views/CreateQuestion.xaml";
+                    break;
+            }
+
         }
     }
 }
