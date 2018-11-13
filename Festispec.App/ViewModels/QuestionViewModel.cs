@@ -51,7 +51,6 @@ namespace Festispec.App.ViewModels
         public ObservableCollection<QuestionItemViewModel> QuestionItems { get; set; }
 
         private readonly Question _question;
-        public event PropertyChangedEventHandler PropertyChanged;
         public RelayCommand SaveQuestionCommand { get; private set; }
 
         private IFormsRepository formsRepository;
@@ -67,11 +66,6 @@ namespace Festispec.App.ViewModels
         private void SaveQuestion()
         {
 
-        }
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public Question ToModel()
