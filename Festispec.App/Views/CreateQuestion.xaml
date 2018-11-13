@@ -9,9 +9,9 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       d:DesignHeight="640" d:DesignWidth="1560"
       Name="CreateQuestionWindow"
       Title="CreateQuestion" DataContext="{Binding Source={StaticResource Locator}, Path=FormViewModel}">
-    <Grid Background="#FFA8A5A5">
+    <Grid Background="#FFA8A5A5" Margin="0,0,0,-35">
 
-        <TabControl  ItemsSource="{Binding Questions}" HorizontalAlignment="Left" Height="610" Margin="10,20,0,0" VerticalAlignment="Top" Width="1540" TabStripPlacement="Left" x:Name="MainTabControl">
+        <TabControl  ItemsSource="{Binding Questions}" HorizontalAlignment="Left" Height="608" Margin="10,57,0,0" VerticalAlignment="Top" Width="1540" TabStripPlacement="Left" x:Name="MainTabControl">
             <TabControl.ItemTemplate>
                 <!-- this is the header template-->
                 <DataTemplate>
@@ -33,14 +33,9 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     </Grid>
                 </DataTemplate>
             </TabControl.ContentTemplate>
-
-
-
-            <!-- <TabItem Header="Vraag[nummer]" x:Name="DefaultQuestion" >
-               
-            </TabItem> -->
         </TabControl>
         <Button Content="Voeg vraag toe" Margin="1443,32,22,575" Command="{Binding AddQuestion}"/>
+        <Label Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="91,-19,0,0" FontSize="48" Height="71"/>
 
     </Grid>
 </Page>

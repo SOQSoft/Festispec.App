@@ -29,6 +29,7 @@ namespace Festispec.App.Repositories
 
             Form form = new Form();
             form.Id = id++;
+            form.Name = "pure aids";
             form.Question.Add(new Question()
             {
                 Id = qid++,
