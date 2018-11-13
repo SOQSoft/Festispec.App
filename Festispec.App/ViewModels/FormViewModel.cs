@@ -9,12 +9,12 @@ namespace Festispec.App.ViewModels
 	{
 		public ObservableCollection<QuestionViewModel> Questions { get; set; }
 		private Form _form;
-		private IFormsRepository formsRepository;
+		private readonly IFormsRepository _formsRepository;
 		public QuestionViewModel SelectedQuestion { get; set; }
 
 		public FormViewModel(Form form)
 		{
-			formsRepository = new FormsTestRepository();
+			_formsRepository = new FormsTestRepository();
 			_form = form;
 			Questions = new ObservableCollection<QuestionViewModel>(form.Question.Select(o => new QuestionViewModel(o)));
 		}

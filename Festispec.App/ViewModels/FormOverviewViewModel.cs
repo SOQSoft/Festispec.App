@@ -10,7 +10,7 @@ namespace Festispec.App.ViewModels
 {
 	public class FormOverviewViewModel : ViewModelBase, IFormOverviewViewModel
 	{
-        private IFormsRepository formRepository;
+        private readonly IFormsRepository _formRepository;
 
         public ObservableCollection<FormViewModel> Forms { get;}
 		public ObservableCollection<FormViewModel> Templates { get; }
@@ -24,9 +24,9 @@ namespace Festispec.App.ViewModels
 
         public FormOverviewViewModel()
         {
-            formRepository = new FormsTestRepository();
-            Forms = new ObservableCollection<FormViewModel>(formRepository.GetAll().Where(o => !o.IsTemplate).Select(o => new FormViewModel(o)));
-            Templates = new ObservableCollection<FormViewModel>(formRepository.GetAll().Where(o => o.IsTemplate).Select(o => new FormViewModel(o)));
+            _formRepository = new FormsTestRepository();
+            Forms = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(o => !o.IsTemplate).Select(o => new FormViewModel(o)));
+            Templates = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(o => o.IsTemplate).Select(o => new FormViewModel(o)));
         }
 		public bool CanEditOrRemove()
 		{
@@ -41,7 +41,7 @@ namespace Festispec.App.ViewModels
                 Name = NewFormText
             };
             NewFormText = null;
-            formRepository.Add(f);
+            _formRepository.Add(f);
             Forms.Add(new FormViewModel(f));
 		}
 
@@ -55,7 +55,7 @@ namespace Festispec.App.ViewModels
             };
             foreach (QuestionViewModel q in SelectedTemplate.Questions) f.Question.Add(q.ToModel());
             NewFormText = null;
-            formRepository.Add(f);
+            _formRepository.Add(f);
             Forms.Add(new FormViewModel(f));
         }
 
@@ -67,7 +67,7 @@ namespace Festispec.App.ViewModels
 		public void Remove()
 		{
             Forms.Remove(SelectedForm);
-            formRepository.Delete(SelectedForm.ToModel());
+            _formRepository.Delete(SelectedForm.ToModel());
 		}
 	}
 }

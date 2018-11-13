@@ -9,7 +9,7 @@ namespace Festispec.App.ViewModels
 {
 	class TemplateOverviewViewModel : ViewModelBase, IFormOverviewViewModel
 	{
-		private IFormsRepository formRepository;
+		private readonly IFormsRepository _formRepository;
 
 		public ObservableCollection<FormViewModel> Forms { get; private set; }
 		public FormViewModel SelectedForm { get; set; }
@@ -20,7 +20,7 @@ namespace Festispec.App.ViewModels
 
 		public TemplateOverviewViewModel()
 		{
-			Forms = new ObservableCollection<FormViewModel>(formRepository.GetAll().Where(c => c.IsTemplate).Select(o => new FormViewModel(o)));
+			Forms = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(c => c.IsTemplate).Select(o => new FormViewModel(o)));
 		}
 
 		public bool CanEditOrRemove()
@@ -35,7 +35,7 @@ namespace Festispec.App.ViewModels
 				IsTemplate = true,
 				Name = NewFormText
 			};
-			formRepository.Add(form);
+			_formRepository.Add(form);
 			FormViewModel formViewModel = new FormViewModel(form);
 			Forms.Add(formViewModel);
 			NewFormText = string.Empty;
@@ -48,7 +48,7 @@ namespace Festispec.App.ViewModels
 
 		public void Remove()
 		{
-			formRepository.Delete(SelectedForm.ToModel());
+			_formRepository.Delete(SelectedForm.ToModel());
 			Forms.Remove(SelectedForm);
 		}
 	}
