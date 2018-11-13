@@ -4,24 +4,20 @@ using System.Collections.ObjectModel;
 
 namespace Festispec.App.ViewModels
 {
-	public abstract class FormOverviewViewModelBase:ViewModelBase
-	{
-		ObservableCollection<FormViewModel> Forms { get;}
+    public interface IFormOverviewViewModelBase
+    {
+        ObservableCollection<FormViewModel> Forms { get; }
 
-		FormViewModel SelectedForm { get; set; }
-		string NewFormText { get; set; }
-		RelayCommand EditCommand { get; }
-		RelayCommand RemoveCommand { get; }
-		RelayCommand CreateCommand { get; }
+        FormViewModel SelectedForm { get; set; }
+        string NewFormTitle { get; set; }
+        RelayCommand EditCommand { get; }
+        RelayCommand RemoveCommand { get; }
+        RelayCommand CreateCommand { get; }
 
-		internal abstract bool CanEditOrRemove();
+        void Edit();
 
-		internal abstract bool CanCreate();
+        void Remove();
 
-		internal abstract void Edit();
-
-		internal abstract void Remove();
-
-		internal abstract void Create();
-	}
+        void Create();
+    }
 }

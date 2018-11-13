@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Festispec.App.Views"
         mc:Ignorable="d"
-        Title="FestiSpec" Height="800" Width="1600" Background="#FFA8A5A5" ResizeMode="NoResize" Icon="festispec_icon.png">
+        Title="FestiSpec" Height="800" Width="1600" Background="#FFA8A5A5" ResizeMode="NoResize" Icon="festispec_icon.png"
+              DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     <Grid>
 
         <Rectangle Fill="#495469" HorizontalAlignment="Left" Height="85" Stroke="Black" VerticalAlignment="Top" Width="1592"/>
@@ -17,7 +18,7 @@
         <Button Command="{Binding TemplatePageBtn}" Content="Templates" HorizontalAlignment="Left" Height="60" Margin="1321.68,10,0,0" VerticalAlignment="Top" Width="248.32" FontSize="24"/>
 
         <TextBlock HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" Text="FestiSpec" VerticalAlignment="Top" Width="300" FontSize="68" Foreground="Black" Margin="30,-14,0,0"/>
-        <Frame Content="ApplicationFrame" HorizontalAlignment="Left" Height="642.5" Margin="30,126.5,0,0" VerticalAlignment="Top" Width="1562" Source="/Festispec.App;component/Views/CreateQuestion.xaml"/>
+        <Frame Content="ApplicationFrame" HorizontalAlignment="Left" Height="642.5" Margin="30,126.5,0,0" VerticalAlignment="Top" Width="1562" Source="{Binding CurrentPage}"/>
 
 
 

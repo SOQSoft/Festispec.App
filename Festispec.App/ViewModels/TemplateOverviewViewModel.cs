@@ -4,61 +4,63 @@ using GalaSoft.MvvmLight.CommandWpf;
 using System.Linq;
 using System.Collections.ObjectModel;
 using Festispec.App.Repositories;
+using System.Collections.Generic;
 
 namespace Festispec.App.ViewModels
 {
-	public class TemplateOverviewViewModel : FormOverviewViewModelBase
-	{
-		private readonly IFormsRepository _formRepository;
+    public class TemplateOverviewViewModel : ViewModelBase, IFormOverviewViewModelBase
+    {
+        private readonly IFormsRepository _formRepository;
 
-		public ObservableCollection<FormViewModel> Forms { get; private set; }
-		public FormViewModel SelectedForm { get; set; }
-		public RelayCommand EditCommand { get; private set; }
-		public RelayCommand RemoveCommand { get; private set; }
-		public RelayCommand CreateCommand { get; private set; }
-		public string NewFormText { get; set; }
+        public ObservableCollection<FormViewModel> Forms { get; private set; }
+        public FormViewModel SelectedForm { get; set; }
+        public RelayCommand EditCommand { get; private set; }
+        public RelayCommand RemoveCommand { get; private set; }
+        public RelayCommand CreateCommand { get; private set; }
+        public string NewFormTitle { get; set; }
 
-		public TemplateOverviewViewModel()
-		{
-			_formRepository = new FormsTestRepository();
-			Forms = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(c => c.IsTemplate).Select(o => new FormViewModel(o)));
-			EditCommand = new RelayCommand(Edit, CanEditOrRemove);
-			RemoveCommand = new RelayCommand(Remove, CanEditOrRemove);
-			CreateCommand = new RelayCommand(Create, CanCreate);
-		}
+        public TemplateOverviewViewModel()
+        {
+            _formRepository = new FormsTestRepository();
+            Forms = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(c => c.IsTemplate).Select(o => new FormViewModel(o)));
+            EditCommand = new RelayCommand(Edit, CanEditOrRemove);
+            RemoveCommand = new RelayCommand(Remove, CanEditOrRemove);
+            CreateCommand = new RelayCommand(Create, CanCreate);
+        }
 
-		internal override bool CanEditOrRemove()
-		{
-			return SelectedForm != null;
-		}
+        public bool CanEditOrRemove()
+        {
+            return SelectedForm != null;
+        }
 
-		internal override bool CanCreate()
-		{
-			return !string.IsNullOrEmpty(NewFormText);
-		}
+        public bool CanCreate()
+        {
+            return !string.IsNullOrEmpty(NewFormTitle);
+        }
 
-		internal override void Create()
-		{
-			Form form = new Form
-			{
-				IsTemplate = true,
-				Name = NewFormText
-			};
-			_formRepository.Add(form);
-			FormViewModel formViewModel = new FormViewModel(form);
-			Forms.Add(formViewModel);
-			NewFormText = string.Empty;
-		}
+        public void Create()
+        {
+            Form form = new Form
+            {
+                IsTemplate = true,
+                Name = NewFormTitle,
+                Question = new List<Question>() { new Question() }
+            };
+            _formRepository.Add(form);
+            FormViewModel formViewModel = new FormViewModel(form);
+            Forms.Add(formViewModel);
+            NewFormTitle = string.Empty;
+        }
 
-		internal override void Edit()
-		{
-			throw new System.NotImplementedException();
-		}
+        public void Edit()
+        {
+            throw new System.NotImplementedException();
+        }
 
-		internal override void Remove()
-		{
-			_formRepository.Delete(SelectedForm.ToModel());
-			Forms.Remove(SelectedForm);
-		}
-	}
+        public void Remove()
+        {
+            _formRepository.Delete(SelectedForm.ToModel());
+            Forms.Remove(SelectedForm);
+        }
+    }
 }
