@@ -1,12 +1,11 @@
 ﻿using Festispec.App.Repositories;
 using Festispec.Database.Models;
 using GalaSoft.MvvmLight;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 namespace Festispec.App.ViewModels
 {
-    public class FormViewModel : ViewModelBase
+	public class FormViewModel : ViewModelBase
     {
         public ObservableCollection<QuestionViewModel> Questions { get; set; }
         private Form _form;

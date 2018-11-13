@@ -13,7 +13,7 @@ namespace Festispec.App.ViewModels
 		RelayCommand RemoveCommand { get; }
 		RelayCommand CreateCommand { get; }
 
-		void CanEditOrRemove();
+		bool CanEditOrRemove();
 
 		void Edit();
 
