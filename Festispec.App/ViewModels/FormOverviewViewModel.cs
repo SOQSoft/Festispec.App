@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Festispec.App.ViewModels
 {
-	public class FormOverviewViewModel : ViewModelBase, IFormOverviewViewModel
+	public class FormOverviewViewModel : FormOverviewViewModelBase
 	{
         private readonly IFormsRepository _formRepository;
 
@@ -20,6 +20,7 @@ namespace Festispec.App.ViewModels
 		public RelayCommand EditCommand { get; private set; }
 		public RelayCommand RemoveCommand { get; private set; }
 		public RelayCommand CreateCommand { get; private set; }
+		public RelayCommand CreateBasedOnTemplateCommand { get; private set; }
 
 
         public FormOverviewViewModel()
@@ -27,13 +28,28 @@ namespace Festispec.App.ViewModels
             _formRepository = new FormsTestRepository();
             Forms = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(o => !o.IsTemplate).Select(o => new FormViewModel(o)));
             Templates = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(o => o.IsTemplate).Select(o => new FormViewModel(o)));
+			EditCommand = new RelayCommand(Edit, CanEditOrRemove);
+			RemoveCommand = new RelayCommand(Remove, CanEditOrRemove);
+			CreateCommand = new RelayCommand(Create, CanCreate);
+			CreateBasedOnTemplateCommand = new RelayCommand(CreateBasedOnTemplate, CanCreateBasedOnTemplate);
         }
-		public bool CanEditOrRemove()
+
+		internal override bool CanEditOrRemove()
 		{
             return SelectedForm != null && Forms.Contains(SelectedForm);
 		}
 
-		public void Create()
+		internal override bool CanCreate()
+		{
+			return !string.IsNullOrEmpty(NewFormText);
+		}
+
+		private bool CanCreateBasedOnTemplate()
+		{
+			return CanCreate() && SelectedTemplate != null;
+		}
+
+		internal override void Create()
 		{
             Form f = new Form()
             {
@@ -45,7 +61,7 @@ namespace Festispec.App.ViewModels
             Forms.Add(new FormViewModel(f));
 		}
 
-        public void CreateBasedOnTemplate()
+        private void CreateBasedOnTemplate()
         {
             if (SelectedTemplate == null) { return; }
             Form f = new Form()
@@ -54,17 +70,17 @@ namespace Festispec.App.ViewModels
                 Name = NewFormText
             };
             foreach (QuestionViewModel q in SelectedTemplate.Questions) f.Question.Add(q.ToModel());
-            NewFormText = null;
+			NewFormText = string.Empty;
             _formRepository.Add(f);
             Forms.Add(new FormViewModel(f));
         }
 
-		public void Edit()
+		internal override void Edit()
 		{
             throw new NotImplementedException();
 		}
 
-		public void Remove()
+		internal override void Remove()
 		{
             Forms.Remove(SelectedForm);
             _formRepository.Delete(SelectedForm.ToModel());

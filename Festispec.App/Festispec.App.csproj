@@ -84,7 +84,7 @@
     <Compile Include="Repositories\IFormsRepository.cs" />
     <Compile Include="ViewModels\FormOverviewViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
-    <Compile Include="ViewModels\IFormOverviewViewModel.cs" />
+    <Compile Include="ViewModels\FormOverviewViewModelBase.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\QuestionItemViewModel.cs" />
     <Compile Include="ViewModels\QuestionViewModel.cs" />

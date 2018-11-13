@@ -7,7 +7,7 @@ using Festispec.App.Repositories;
 
 namespace Festispec.App.ViewModels
 {
-	class TemplateOverviewViewModel : ViewModelBase, IFormOverviewViewModel
+	public class TemplateOverviewViewModel : FormOverviewViewModelBase
 	{
 		private readonly IFormsRepository _formRepository;
 
@@ -20,15 +20,24 @@ namespace Festispec.App.ViewModels
 
 		public TemplateOverviewViewModel()
 		{
+			_formRepository = new FormsTestRepository();
 			Forms = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(c => c.IsTemplate).Select(o => new FormViewModel(o)));
+			EditCommand = new RelayCommand(Edit, CanEditOrRemove);
+			RemoveCommand = new RelayCommand(Remove, CanEditOrRemove);
+			CreateCommand = new RelayCommand(Create, CanCreate);
 		}
 
-		public bool CanEditOrRemove()
+		internal override bool CanEditOrRemove()
 		{
 			return SelectedForm != null;
 		}
 
-		public void Create()
+		internal override bool CanCreate()
+		{
+			return !string.IsNullOrEmpty(NewFormText);
+		}
+
+		internal override void Create()
 		{
 			Form form = new Form
 			{
@@ -41,12 +50,12 @@ namespace Festispec.App.ViewModels
 			NewFormText = string.Empty;
 		}
 
-		public void Edit()
+		internal override void Edit()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void Remove()
+		internal override void Remove()
 		{
 			_formRepository.Delete(SelectedForm.ToModel());
 			Forms.Remove(SelectedForm);

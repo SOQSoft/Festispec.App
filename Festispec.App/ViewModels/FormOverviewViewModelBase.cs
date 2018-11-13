@@ -1,9 +1,10 @@
-﻿using GalaSoft.MvvmLight.CommandWpf;
+﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
 using System.Collections.ObjectModel;
 
 namespace Festispec.App.ViewModels
 {
-	public interface IFormOverviewViewModel
+	public abstract class FormOverviewViewModelBase:ViewModelBase
 	{
 		ObservableCollection<FormViewModel> Forms { get;}
 
@@ -13,12 +14,14 @@ namespace Festispec.App.ViewModels
 		RelayCommand RemoveCommand { get; }
 		RelayCommand CreateCommand { get; }
 
-		bool CanEditOrRemove();
+		internal abstract bool CanEditOrRemove();
 
-		void Edit();
+		internal abstract bool CanCreate();
 
-		void Remove();
+		internal abstract void Edit();
 
-		void Create();
+		internal abstract void Remove();
+
+		internal abstract void Create();
 	}
 }
