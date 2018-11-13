@@ -23,12 +23,14 @@ namespace Festispec.App.ViewModels
     {
         public ICommand TemplatePageBtn { get; set; }
         public ICommand AddQuestion { get; set; }
+        public ICommand QuestionPageBtn { get; set; }
         public Uri DisplayPage { get; set; }
 
         public MainViewModel()
         {
             TemplatePageBtn = new RelayCommand(ShowTemplatePage);
             AddQuestion = new RelayCommand(ViewCreateQuestion);
+            QuestionPageBtn = new RelayCommand(ViewQuestions);
             DisplayPage = new Uri("QuestionListHome.xaml", UriKind.Relative);
         }
 
@@ -41,6 +43,11 @@ namespace Festispec.App.ViewModels
         public void ViewCreateQuestion()
         {
             DisplayPage = new Uri("CreateQuestion.xaml", UriKind.Relative);
+            RaisePropertyChanged("DisplayPage");
+        }
+        public void ViewQuestions()
+        {
+            DisplayPage = new Uri("QuestionListHome.xaml", UriKind.Relative);
             RaisePropertyChanged("DisplayPage");
         }
     }

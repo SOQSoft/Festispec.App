@@ -40,7 +40,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                
             </TabItem> -->
         </TabControl>
-        <Button Content="Voeg vraag toe" Margin="1437,60,28,546" Command="{Binding AddQuestion}"/>
+        <Button Content="Voeg vraag toe" Margin="1406,38,59,561" Command="{Binding AddQuestion}"/>
 
     </Grid>
 </Page>

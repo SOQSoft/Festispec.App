@@ -17,8 +17,13 @@
         <Button Command="{Binding QuestionPageBtn}" Content="Vragenlijsten" HorizontalAlignment="Left" Height="60" Margin="1083.76,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
         <Button Command="{Binding TemplatePageBtn}" Content="Templates" HorizontalAlignment="Left" Height="60" Margin="1321.68,10,0,0" VerticalAlignment="Top" Width="248.32" FontSize="24"/>
 
-        <TextBlock HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" Text="FestiSpec" VerticalAlignment="Top" Width="300" FontSize="68" Foreground="Black" Margin="30,-14,0,0"/>
-        <Frame Name="MainFrame" Content="ApplicationFrame" HorizontalAlignment="Left" Height="642.5" Margin="30,126.5,0,0" VerticalAlignment="Top" Width="1562" Source="{Binding DisplayPage}"/>
+        <TextBlock HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" Text="FestiSpec" VerticalAlignment="Top" Width="300" FontSize="68" Foreground="Black" Margin="70,-15,0,0"/>
+        <Frame Name="MainFrame" Content="ApplicationFrame" HorizontalAlignment="Left" Height="678" Margin="0,91,0,0" VerticalAlignment="Top" Width="1592" Source="{Binding DisplayPage}"/>
+        <Image HorizontalAlignment="Left" Height="65" Margin="10,5,0,0" VerticalAlignment="Top" Width="70" Source="festispec_icon.png">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="festispec_icon.png"/>
+            </Image.OpacityMask>
+        </Image>
 
 
 
