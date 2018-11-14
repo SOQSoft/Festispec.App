@@ -87,12 +87,10 @@
     <Compile Include="Repositories\FormsTestRepository.cs" />
     <Compile Include="Repositories\IFormsRepository.cs" />
     <Compile Include="ViewModels\FormOverviewViewModel.cs" />
-    <Compile Include="ViewModels\FormOverviewViewModelBase.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\QuestionItemViewModel.cs" />
     <Compile Include="ViewModels\QuestionViewModel.cs" />
-    <Compile Include="ViewModels\TemplateOverviewViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\Controls\CreateOptions.xaml.cs">
       <DependentUpon>CreateOptions.xaml</DependentUpon>
@@ -106,14 +104,17 @@
     <Compile Include="Views\Controls\EmptyControl.xaml.cs">
       <DependentUpon>EmptyControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CreateQuestion.xaml.cs">
-      <DependentUpon>CreateQuestion.xaml</DependentUpon>
+    <Compile Include="Views\EditForm.xaml.cs">
+      <DependentUpon>EditForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormList.xaml.cs">
+      <DependentUpon>FormList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\QuestionListHome.xaml.cs">
-      <DependentUpon>QuestionListHome.xaml</DependentUpon>
+    <Compile Include="Views\TemplateList.xaml.cs">
+      <DependentUpon>TemplateList.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -168,15 +169,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CreateQuestion.xaml">
+    <Page Include="Views\EditForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FormList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\QuestionListHome.xaml">
+    <Page Include="Views\TemplateList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

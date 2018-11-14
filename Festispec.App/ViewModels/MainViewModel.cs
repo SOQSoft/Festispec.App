@@ -1,4 +1,6 @@
+using System;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 
 namespace Festispec.App.ViewModels
 {
@@ -19,9 +21,29 @@ namespace Festispec.App.ViewModels
         ///Festispec.App;component/Views/QuestionListHome.xaml
         private string _CurrentPage;
         public string CurrentPage { get => _CurrentPage;  private set { _CurrentPage = value; RaisePropertyChanged(); } }
+public RelayCommand QuestionPageBtn { get; }
+        public RelayCommand TemplatePageBtn { get; }
+
         public MainViewModel()
         {
+            QuestionPageBtn = new RelayCommand(GoToQuestionsPage);
+            TemplatePageBtn = new RelayCommand(GoToTemplatesPage);
+            GoToQuestionsPage();
+        }
+
+        public void GoToTemplatesPage()
+        {
+            ChangePage("TemplateList");
+        }
+
+        public void GoToQuestionsPage()
+        {
             ChangePage("FormList");
+        }
+
+        public void GoToEditFormPage()
+        {
+            ChangePage("EditForm");
         }
 
         //TODO Temporary page system change to a navigation service 
@@ -30,10 +52,13 @@ namespace Festispec.App.ViewModels
             switch (page)
             {
                 case "FormList":
-                    CurrentPage = "/Views/QuestionListHome.xaml";
+                    CurrentPage = "/Views/FormList.xaml";
+                    break;
+                case "TemplateList":
+                    CurrentPage = "/Views/TemplateList.xaml";
                     break;
                 case "EditForm":
-                    CurrentPage = "/Views/CreateQuestion.xaml";
+                    CurrentPage = "/Views/EditForm.xaml";
                     break;
             }
 

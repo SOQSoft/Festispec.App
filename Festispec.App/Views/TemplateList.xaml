@@ -1,0 +1,41 @@
+﻿<Page x:Class="Festispec.App.Views.TemplateList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Festispec.App.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="640" d:DesignWidth="1560"
+      Title="QuestionListHome" DataContext="{Binding Source={StaticResource Locator}, Path=FormOverview}" >
+    <Grid Background="#FFA8A5A5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" TextWrapping="Wrap" Text="Templates" VerticalAlignment="Top" Width="215" FontSize="36"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="10,65,0,0" TextWrapping="Wrap" Text="Zoeken..." VerticalAlignment="Top" Width="205"/>
+        <DataGrid HorizontalAlignment="Left" Height="376" Margin="10,118,0,0" VerticalAlignment="Top" Width="1540" ItemsSource="{Binding Templates}" SelectedItem="{Binding SelectedForm}"  SelectionMode="Single" AutoGenerateColumns="False" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Template" Binding="{Binding Name}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Aanpassen" Command="{Binding EditCommand}" CommandParameter="true" HorizontalAlignment="Left" Height="68" Margin="24,132,0,0" Grid.Row="1" VerticalAlignment="Top" Width="156"/>
+        <Button Content="Nieuwe template aanmaken" Command="{Binding CreateCommand}" CommandParameter="true" HorizontalAlignment="Left" Height="39" Margin="1319,169,0,0" Grid.Row="1" VerticalAlignment="Top" Width="173">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text,ElementName=testings}"
+                                     Value="">
+                            <Setter Property="IsEnabled"
+                                    Value="False" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBox Name="testings" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding NewFormTitle}" VerticalAlignment="Top" Width="173" Margin="1319,141,0,0" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Template naam" VerticalAlignment="Top" Margin="1319,120,0,0" Grid.Row="1" Width="144"/>
+        <Button Content="Verwijderen" Command="{Binding RemoveCommand}" CommandParameter="true" IsEnabled="{Binding SelectedQuestionItem.Count}" HorizontalAlignment="Left" Height="68" Margin="198,133,0,0" Grid.Row="1" VerticalAlignment="Top" Width="156"/>
+
+    </Grid>
+</Page>

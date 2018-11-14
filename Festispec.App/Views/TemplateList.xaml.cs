@@ -18,9 +18,9 @@ namespace Festispec.App.Views
     /// <summary>
     /// Interaction logic for QuestionListHome.xaml
     /// </summary>
-    public partial class QuestionListHome : Page
+    public partial class TemplateList : Page
     {
-        public QuestionListHome()
+        public TemplateList()
         {
             InitializeComponent();
         }

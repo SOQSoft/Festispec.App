@@ -61,7 +61,6 @@ namespace Festispec.App.Repositories
                     }
                 }
             });
-            var test = JsonConvert.SerializeObject(form);
 
             Forms.Add(form);
 
@@ -69,6 +68,22 @@ namespace Festispec.App.Repositories
             form = new Form();
             form.Id = id++;
             form.Name = "Festival jantje";
+            form.Question.Add(new Question()
+            {
+                Id = qid++,
+                FormId = form.Id,
+                Form = form,
+                Description = "lolxd",
+                Text = "Wanneer kwamen koeien",
+                QuestionType = 0, // TODO: Adding enums back;
+            });
+            Forms.Add(form);
+
+
+            form = new Form();
+            form.Id = id++;
+            form.Name = "Template Pieter";
+            form.IsTemplate = true;
             form.Question.Add(new Question()
             {
                 Id = qid++,
