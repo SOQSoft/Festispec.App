@@ -20,7 +20,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Aanpassen" Command="{Binding EditCommand}" HorizontalAlignment="Left" Height="68" Margin="24,132,0,0" Grid.Row="1" VerticalAlignment="Top" Width="156"/>
-        <Button Content="Nieuwe vragenlijst aanmaken" Command="{Binding CreateCommand}" HorizontalAlignment="Left" Height="39" Margin="1348,211,0,0" Grid.Row="1" VerticalAlignment="Top" Width="144">
+        <Button Content="Nieuwe vragenlijst aanmaken" Command="{Binding CreateCommand}" HorizontalAlignment="Left" Height="39" Margin="1348,0,0,25" Grid.Row="1" VerticalAlignment="Bottom" Width="144">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Style.Triggers>
@@ -33,9 +33,9 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBox Name="testings" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding NewFormTitle}" VerticalAlignment="Top" Width="144" Margin="1348,177,0,0" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Vragenlijst naam" VerticalAlignment="Top" Margin="1348,156,0,0" Grid.Row="1" Width="144"/>
+        <TextBox Name="testings" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding NewFormTitle}" VerticalAlignment="Bottom" Width="144" Margin="1348,0,0,69" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Vragenlijst naam" VerticalAlignment="Bottom" Margin="1348,0,0,124" Grid.Row="1" Width="144"/>
         <Button Content="Verwijderen" Command="{Binding RemoveCommand}" IsEnabled="{Binding SelectedQuestionItem.Count}" HorizontalAlignment="Left" Height="68" Margin="198,133,0,0" Grid.Row="1" VerticalAlignment="Top" Width="156"/>
-
+        <ComboBox ItemsSource="{Binding Templates}" SelectedItem="{Binding SelectedTemplate}" DisplayMemberPath="Name" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="144" Margin="1348,0,0,97" Grid.Row="1"/>
     </Grid>
 </Page>

@@ -19,8 +19,8 @@
                 <DataGridTextColumn Header="Template" Binding="{Binding Name}" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Aanpassen" Command="{Binding EditCommand}" CommandParameter="true" HorizontalAlignment="Left" Height="68" Margin="24,132,0,0" Grid.Row="1" VerticalAlignment="Top" Width="156"/>
-        <Button Content="Nieuwe template aanmaken" Command="{Binding CreateCommand}" CommandParameter="true" HorizontalAlignment="Left" Height="39" Margin="1319,169,0,0" Grid.Row="1" VerticalAlignment="Top" Width="173">
+        <Button Content="Aanpassen" Command="{Binding EditCommand}" HorizontalAlignment="Left" Height="68" Margin="24,132,0,0" Grid.Row="1" VerticalAlignment="Top" Width="156"/>
+        <Button Content="Nieuwe template aanmaken" Command="{Binding CreateCommand}" CommandParameter="true" HorizontalAlignment="Left" Height="39" Margin="1327,0,0,46" Grid.Row="1" VerticalAlignment="Bottom" Width="173">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Style.Triggers>
@@ -33,9 +33,9 @@
                 </Style>
             </Button.Style>
         </Button>
-        <TextBox Name="testings" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding NewFormTitle}" VerticalAlignment="Top" Width="173" Margin="1319,141,0,0" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Template naam" VerticalAlignment="Top" Margin="1319,120,0,0" Grid.Row="1" Width="144"/>
-        <Button Content="Verwijderen" Command="{Binding RemoveCommand}" CommandParameter="true" IsEnabled="{Binding SelectedQuestionItem.Count}" HorizontalAlignment="Left" Height="68" Margin="198,133,0,0" Grid.Row="1" VerticalAlignment="Top" Width="156"/>
+        <TextBox Name="testings" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding NewFormTitle}" VerticalAlignment="Bottom" Width="173" Margin="1327,0,0,89" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Template naam" VerticalAlignment="Bottom" Margin="1327,0,0,112" Grid.Row="1" Width="144"/>
+        <Button Content="Verwijderen" Command="{Binding RemoveCommand}"   HorizontalAlignment="Left" Height="68" Margin="198,133,0,0" Grid.Row="1" VerticalAlignment="Top" Width="156"/>
 
     </Grid>
 </Page>
