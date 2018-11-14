@@ -6,10 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace Festispec.App.ViewModels
 {
-    public class FormOverviewViewModel : ViewModelBase, IFormOverviewViewModelBase
+    public class FormOverviewViewModel : ViewModelBase
     {
         private readonly IFormsRepository _formRepository;
 
@@ -26,11 +27,9 @@ namespace Festispec.App.ViewModels
         }
         public FormViewModel SelectedForm { get; set; }
         public FormViewModel SelectedTemplate { get; set; }
-        public RelayCommand EditCommand { get; private set; }
-        public RelayCommand RemoveCommand { get; private set; }
-        public RelayCommand CreateCommand { get; private set; }
-        public RelayCommand CreateBasedOnTemplateCommand { get; private set; }
-
+        public ICommand EditCommand { get; private set; }
+        public ICommand RemoveCommand { get; private set; }
+        public ICommand CreateCommand { get; private set; }
         private ViewModelLocator _viewModelLocator;
 
         public FormOverviewViewModel()
@@ -38,60 +37,63 @@ namespace Festispec.App.ViewModels
             _formRepository = new FormsTestRepository();
             Forms = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(o => !o.IsTemplate).Select(o => new FormViewModel(o)));
             Templates = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(o => o.IsTemplate).Select(o => new FormViewModel(o)));
-            EditCommand = new RelayCommand(Edit, CanEditOrRemove);
-            RemoveCommand = new RelayCommand(Remove, CanEditOrRemove);
-            CreateCommand = new RelayCommand(Create);
-            CreateBasedOnTemplateCommand = new RelayCommand(CreateBasedOnTemplate, CanCreateBasedOnTemplate);
+            EditCommand = new RelayCommand<bool>(Edit, CanEditOrRemove);
+            RemoveCommand = new RelayCommand<bool>(Remove, CanEditOrRemove);
+            CreateCommand = new RelayCommand<bool>(Create);
             _viewModelLocator = new ViewModelLocator();
         }
 
-        public bool CanEditOrRemove()
+        public bool CanEditOrRemove(bool isTemplate)
         {
-            return SelectedForm != null && Forms.Contains(SelectedForm);
+            return SelectedForm != null && ((SelectedForm.IsTemplate && Templates.Contains(SelectedForm)) || (!SelectedForm.IsTemplate && Forms.Contains(SelectedForm)));
         }
 
-        private bool CanCreateBasedOnTemplate()
-        {
-            return SelectedTemplate != null;
-        }
-
-        public void Create()
+        public void Create(bool isTemplate)
         {
             Form f = new Form()
             {
-                IsTemplate = false,
+                IsTemplate = isTemplate,
                 Name = NewFormTitle,
-                Question = new List<Question>() { new Question() }
-
             };
+
+            if (SelectedTemplate != null)
+            {
+                foreach (QuestionViewModel q in SelectedTemplate.Questions) f.Question.Add(q.ToModel());
+            }
+            else
+            {
+                f.Question.Add(new Question());
+            }
             NewFormTitle = null;
             _formRepository.Add(f);
-            Forms.Add(new FormViewModel(f));
-        }
-
-        private void CreateBasedOnTemplate()
-        {
-            if (SelectedTemplate == null) { return; }
-            Form f = new Form()
+            if (!isTemplate)
             {
-                IsTemplate = false,
-                Name = NewFormTitle
-            };
-            foreach (QuestionViewModel q in SelectedTemplate.Questions) f.Question.Add(q.ToModel());
-            NewFormTitle = string.Empty;
-            _formRepository.Add(f);
-            Forms.Add(new FormViewModel(f));
+                Forms.Add(new FormViewModel(f));
+            }
+            else
+            {
+                Templates.Add(new FormViewModel(f));
+            }
         }
 
-        public void Edit()
+
+
+        public void Edit(bool isTemplate)
         {
-            _viewModelLocator.Main.ChangePage("EditForm");
+            _viewModelLocator.Main.GoToEditFormPage();
         }
 
-        public void Remove()
+        public void Remove(bool isTemplate)
         {
             _formRepository.Delete(SelectedForm.ToModel());
-            Forms.Remove(SelectedForm);
+            if (isTemplate)
+            {
+                Templates.Remove(SelectedForm);
+            }
+            else
+            {
+                Forms.Remove(SelectedForm);
+            }
         }
     }
 }
