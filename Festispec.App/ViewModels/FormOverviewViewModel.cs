@@ -75,9 +75,6 @@ namespace Festispec.App.ViewModels
                 Templates.Add(new FormViewModel(f));
             }
         }
-
-
-
         public void Edit(bool isTemplate)
         {
             _viewModelLocator.Main.GoToEditFormPage();
