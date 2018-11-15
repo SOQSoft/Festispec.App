@@ -43,9 +43,20 @@
     <Reference Include="nunit.framework, Version=3.11.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.11.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fesispec.Domain\Festispec.Domain.csproj">
+      <Project>{6AC69184-6F12-4765-8B35-DAB40E6B8FD7}</Project>
+      <Name>Festispec.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Festispec.App\Festispec.App.csproj">
+      <Project>{A35974DE-1586-4686-9C77-542640F06EB0}</Project>
+      <Name>Festispec.App</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
