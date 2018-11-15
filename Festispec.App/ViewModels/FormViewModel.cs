@@ -22,7 +22,7 @@ namespace Festispec.App.ViewModels
         private Form _form;
         private IFormsRepository formsRepository;
         public QuestionViewModel SelectedQuestion { get; set; }
-        public ICommand AddQuestion { get; set; }
+        public ICommand AddQuestionCommand { get; set; }
         private int count = 0;
         public FormViewModel(Form form)
         {
@@ -30,7 +30,7 @@ namespace Festispec.App.ViewModels
             _form = form;
             Questions = new ObservableCollection<QuestionViewModel>(form.Question.Select(o => new QuestionViewModel(o, count++)));
             SelectedQuestion = Questions.FirstOrDefault();
-            AddQuestion = new RelayCommand(addQuestion);
+            AddQuestionCommand = new RelayCommand(AddQuestion);
         }
         public int Id
         {
@@ -68,7 +68,7 @@ namespace Festispec.App.ViewModels
                 RaisePropertyChanged();
             }
         }
-        private void addQuestion()
+        private void AddQuestion()
         {
             Questions.Add(new QuestionViewModel(new Question(), count++));
         }
