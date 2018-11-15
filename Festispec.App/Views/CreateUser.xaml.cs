@@ -17,7 +17,7 @@ namespace Festispec.App.Views
     /// <summary>
     /// Interaction logic for CreateUser.xaml
     /// </summary>
-    public partial class CreateUser : Window
+    public partial class CreateUser : Page
     {
         public CreateUser()
         {
