@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Festispec.Domain.src
+namespace Festispec.Domain
 {
     public enum QuestionType
     {

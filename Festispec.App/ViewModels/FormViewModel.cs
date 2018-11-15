@@ -1,6 +1,6 @@
 ﻿using Festispec.App.Repositories;
 using Festispec.App.Views;
-using Festispec.Database.Models;
+using Festispec.Domain;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -74,5 +74,16 @@ namespace Festispec.App.ViewModels
         }
 
 		public Form ToModel() { return _form; }
-	}
+
+        public override bool Equals(object obj)
+        {
+            var model = obj as FormViewModel;
+            return model != null &&
+                   Id == model.Id;
+        }
+        public override int GetHashCode()
+        {
+            return 2108858624 + Id.GetHashCode();
+        }
+    }
 }

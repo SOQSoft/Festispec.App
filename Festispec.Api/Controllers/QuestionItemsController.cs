@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Festispec.Database;
-using Festispec.Database.Models;
+using Festispec.Domain;
 
 namespace Festispec.Api.Controllers
 {

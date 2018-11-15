@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Festispec.Database.Models;
+﻿using Festispec.Domain;
+using System.Collections.Generic;
 
 namespace Festispec.App.Repositories
 {

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Festispec.Database.Models;
 using Festispec.Domain;
-//using Festispec.Domain.src;
 using Microsoft.EntityFrameworkCore;
 
 namespace Festispec.Database
