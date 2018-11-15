@@ -1,5 +1,5 @@
 ﻿using Festispec.App.Repositories;
-using Festispec.Database.Models;
+using Festispec.Domain;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using System;
@@ -75,9 +75,6 @@ namespace Festispec.App.ViewModels
                 Templates.Add(new FormViewModel(f));
             }
         }
-
-
-
         public void Edit(bool isTemplate)
         {
             _viewModelLocator.Main.GoToEditFormPage();

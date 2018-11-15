@@ -1,5 +1,4 @@
-﻿using Festispec.Database.Models;
-using Festispec.Domain.src;
+﻿using Festispec.Domain;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

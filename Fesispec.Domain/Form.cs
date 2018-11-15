@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Festispec.Database.Models
+namespace Festispec.Domain
 {
     public partial class Form
     {
