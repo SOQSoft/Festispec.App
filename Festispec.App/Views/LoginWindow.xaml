@@ -7,13 +7,27 @@
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
-        <TextBlock HorizontalAlignment="Center" Height="65" Margin="340,28.203,332,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="120" FontSize="48"/>
-        <TextBox HorizontalAlignment="Center" Height="25" Margin="303.25,135,295.75,0" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Top" Width="195"/>
-        <Label Content="Gebruikersnaam" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="97.75" Margin="352.25,110,0,0"/>
-        <TextBox HorizontalAlignment="Center" Height="25" Margin="303.25,205,295.75,0" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Top" Width="195"/>
-        <Label Content="Wachtwoord" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="97.75" Margin="352.25,180,0,0"/>
-        <Button Content="Inloggen" Command="{Binding Login}" HorizontalAlignment="Left" Height="20" Margin="370,255,0,0" VerticalAlignment="Top" Width="60"/>
-        <Button Content="Wachtwoord vergeten" Command="{Binding ForgotPassword}" HorizontalAlignment="Left" Height="20" Margin="336.75,290,0,0" VerticalAlignment="Top" Width="128.25"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Height="65" TextWrapping="Wrap" Text="Login" VerticalAlignment="Center" Width="Auto" FontSize="48"/>
+        <Label Grid.Column="1" Grid.Row="1" Content="Gebruikersnaam" HorizontalAlignment="Center" Height="25" VerticalAlignment="Top" Width="Auto"/>
+        <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Height="25" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Bottom" Width="200"/>
+        <Label Grid.Column="1" Grid.Row="2" Content="Wachtwoord" HorizontalAlignment="Center" Height="25" VerticalAlignment="Top" Width="Auto"/>
+        <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="25" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Bottom" Width="200"/>
+        <Button Grid.Column="1" Grid.Row="3" Content="Inloggen" Command="{Binding Login}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="130"/>
+        <Button Grid.Column="1" Grid.Row="4" Content="Wachtwoord vergeten" Command="{Binding ForgotPassword}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="130"/>
 
     </Grid>
 </Window>

@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="CreateUser" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Center" Height="65" Margin="210,25,202,0" TextWrapping="Wrap" Text="Nieuwe gebruiker" VerticalAlignment="Top" Width="380" FontSize="48"/>
         <TextBox HorizontalAlignment="Center" Height="25" Margin="302.25,135,294.75,0" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Top" Width="195"/>
         <Label Content="Gebruikersnaam" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="97.75" Margin="352.25,110,0,0"/>
