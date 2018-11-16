@@ -25,6 +25,13 @@ namespace Festispec.App.Repositories
             Users.Add(user);
 
             user = new User();
+            user.Password = "a";
+            user.Username = "a";
+            user.Role = new Role();
+            user.Employee = new Employee();
+            Users.Add(user);
+
+            user = new User();
             user.Password = "abcd";
             user.Username = "test2";
             user.Role = new Role();
@@ -50,7 +57,8 @@ namespace Festispec.App.Repositories
 
         public ICollection<User> GetAll()
         {
-            throw new NotImplementedException();
+            ICollection<User> result = Users;
+            return result;
         }
 
         public void Update(User user)

@@ -32,7 +32,7 @@ namespace Festispec.App.ViewModels
         public FormOverviewViewModel FormOverview => ServiceLocator.Current.GetInstance<FormOverviewViewModel>();
         public FormViewModel FormViewModel => FormOverview.SelectedForm;
         public QuestionViewModel QuestionViewmodel => FormViewModel.SelectedQuestion;
-        public LoginViewModel LoginViewModel => ServiceLocator.Current.GetInstance<LoginViewModel>();
+        public LoginViewModel Login=> ServiceLocator.Current.GetInstance<LoginViewModel>();
 
         public static void Cleanup()
         {

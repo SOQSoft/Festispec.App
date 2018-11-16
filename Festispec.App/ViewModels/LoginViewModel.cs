@@ -8,6 +8,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Festispec.App.Repositories;
 using Festispec.Domain;
+using Festispec.App.Views;
 using System.Windows;
 
 namespace Festispec.App.ViewModels
@@ -29,16 +30,16 @@ namespace Festispec.App.ViewModels
             get { return _password; }
             set { _password = value; }
         }
-        public ICommand LoginCommand;
+        public ICommand Login { get; set; }
         private UserTestRepository _users;
 
         public LoginViewModel()
         {
             _users = new UserTestRepository();
-            LoginCommand = new RelayCommand(Login);
+            Login = new RelayCommand<Window>(LoginCommand);
         }
 
-        public void Login()
+        public void LoginCommand(Window loginWindow)
         {
             if(fieldsAreEmpty())
             {
@@ -46,8 +47,10 @@ namespace Festispec.App.ViewModels
             }
             if(isPasswordUsernameCombinationCorrect())
             {
-                //TODO initialise mainview
-
+                //TODO initialise 
+                var window = new MainWindow();
+                loginWindow.Close();
+                window.ShowDialog();
             }
             else
             {
@@ -73,7 +76,7 @@ namespace Festispec.App.ViewModels
 
         public bool isPasswordUsernameCombinationCorrect()
         {
-            User InputUser = _users.GetAll().First(u => u.Username == _username);
+            User InputUser = _users.GetAll().FirstOrDefault(u => u.Username == _username);
             if (InputUser == null)
             {
                 return false;
