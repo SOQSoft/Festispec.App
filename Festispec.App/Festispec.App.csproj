@@ -88,6 +88,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\QuestionTypeToControlConverter.cs" />
+    <Compile Include="Helpers\TextToFirstCharConverter.cs" />
+    <Compile Include="Helpers\TextToNummerOnlyConverter.cs" />
     <Compile Include="Repositories\EmployeeTestRepository.cs" />
     <Compile Include="Repositories\FormsTestRepository.cs" />
     <Compile Include="Repositories\IEmployeeRepository.cs" />

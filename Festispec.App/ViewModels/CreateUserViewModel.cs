@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Festispec.App.ViewModels
@@ -30,21 +31,13 @@ namespace Festispec.App.ViewModels
 		public int HouseNumber { get; set; }
 		private char? _houseNumberSuffix;
 
-		public string HouseNumberSuffix
+		public char? HouseNumberSuffix
 		{
-			get => Convert.ToString(_houseNumberSuffix);
+            get => _houseNumberSuffix;
 			set
 			{
-				if (value == null)
-					_houseNumberSuffix = null;
-				try
-				{
-					_houseNumberSuffix = Convert.ToChar(value);
-				}
-				catch (FormatException e)
-				{
-					Console.WriteLine(e.ToString());
-				}
+                _houseNumberSuffix = value;
+                RaisePropertyChanged();
 			}
 		}
 
@@ -103,10 +96,22 @@ namespace Festispec.App.ViewModels
 				Street = Street,
 				HouseNumber = HouseNumber,
 			};
-			if (_houseNumberSuffix != null)
-				employee.HouseNumberSuffix = (char)_houseNumberSuffix;
+			if (_houseNumberSuffix != null) { employee.HouseNumberSuffix = (char) _houseNumberSuffix; }
 			_userRepo.Add(user);
 			_employeeRepo.AddEmployee(employee);
+            //TODO: Change to some page
+
+            Trace.WriteLine(user);
+            Trace.WriteLine(FirstName);
+            Trace.WriteLine(LastName);
+            Trace.WriteLine(DateOfBirth);
+            Trace.WriteLine(Email);
+            Trace.WriteLine(Phone);
+            Trace.WriteLine(Country);
+            Trace.WriteLine(City);
+            Trace.WriteLine(Street);
+            Trace.WriteLine(HouseNumber);
+            Trace.WriteLine(HouseNumberSuffix);
 		}
 
 		private void GeneratePassword()
