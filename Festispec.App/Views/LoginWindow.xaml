@@ -27,7 +27,7 @@
         <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Height="25" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Bottom" Width="200"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Wachtwoord" HorizontalAlignment="Center" Height="25" VerticalAlignment="Top" Width="Auto"/>
         <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="25" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Center" Width="200"/>
-        <Label Grid.Column="1" Grid.Row="2" Foreground="Red" Content="{Binding Error}" HorizontalAlignment="Center" Height="25" VerticalAlignment="Bottom" Width="Auto"/>
+        <Label Grid.Column="1" Grid.Row="2" Foreground="Red" Content="{Binding ErrorMessage}" HorizontalAlignment="Center" Height="25" VerticalAlignment="Bottom" Width="Auto"/>
         <Button Grid.Column="1" Grid.Row="3" Content="Inloggen" Command="{Binding Login}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="130"/>
         <Button Grid.Column="1" Grid.Row="4" Content="Wachtwoord vergeten" Command="{Binding ForgotPassword}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="130"/>
 
