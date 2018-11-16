@@ -88,9 +88,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\QuestionTypeToControlConverter.cs" />
-    <Compile Include="Repositories\EmployeeRepository.cs" />
+    <Compile Include="Repositories\EmployeeTestRepository.cs" />
     <Compile Include="Repositories\FormsTestRepository.cs" />
+    <Compile Include="Repositories\IEmployeeRepository.cs" />
     <Compile Include="Repositories\IFormsRepository.cs" />
+    <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="ViewModels\CreateUserViewModel.cs" />
     <Compile Include="Repositories\IUsersRepository.cs" />
