@@ -159,6 +159,17 @@ namespace Festispec.App.ViewModels
             }
 		}
 
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                _errorMessage = value;
+                RaisePropertyChanged();
+            }
+        }
+
 		private IRoleRepository _roleRepo;
 		private IEmployeeRepository _employeeRepo;
 		private IUsersRepository _userRepo;
@@ -173,30 +184,36 @@ namespace Festispec.App.ViewModels
 			_employeeRepo = new EmployeeTestRepository();
 			_userRepo = new UserTestRepository();
 			Roles = new ObservableCollection<RoleViewModel>(_roleRepo.GetAll().Select(r => new RoleViewModel(r)));
-			RegisterCommand = new RelayCommand(Register, CanRegister);
+			RegisterCommand = new RelayCommand(Register);
 			GeneratePasswordCommand = new RelayCommand(GeneratePassword);
             Role = Roles[0];
             DateOfBirth = DateTime.Now;
 		}
 
-		public bool CanRegister()
-		{
-			return !string.IsNullOrWhiteSpace(Username)
-				&& !string.IsNullOrWhiteSpace(Password)
-				&& Role != null
-				&& !string.IsNullOrWhiteSpace(FirstName)
-				&& !string.IsNullOrWhiteSpace(LastName)
-				&& DateOfBirth != null
-				&& !string.IsNullOrWhiteSpace(Email)
-				&& Email.Count(c => c == '@') == 1
-				&& !string.IsNullOrWhiteSpace(Phone)
-				&& !string.IsNullOrWhiteSpace(City)
-				&& !string.IsNullOrWhiteSpace(Street)
-				&& HouseNumber != 0;
-		}
+        public bool CanRegister()
+        {
+            List<string> messages = new List<string>();
+            if (string.IsNullOrWhiteSpace(Username)) { messages.Add("Gebruikersnaam is leeg."); }
+            else if (_userRepo.GetAll().Any(u => u.Username == Username)) { messages.Add("Gebruikersnaam bestaat al."); }
+            if (string.IsNullOrWhiteSpace(Password)) { messages.Add("Wachtwoord is leeg."); }
+            if (Role == null) { messages.Add("Rol is niet gekozen."); }
+            if (string.IsNullOrWhiteSpace(FirstName)) { messages.Add("Voornaam is leeg."); }
+            if (string.IsNullOrWhiteSpace(LastName)) { messages.Add("Achternaam is leeg."); }
+            if (DateOfBirth == null) { messages.Add("Geboortedatum is niet gekozen."); }
+            if (string.IsNullOrWhiteSpace(Email)) { messages.Add("E-Mail is leeg."); }
+            else if (Email.Count(c => c == '@') != 1) { messages.Add("E-Mail is niet geldig."); }
+            if (string.IsNullOrWhiteSpace(Phone)) { messages.Add("Telefoonnummer is leeg."); }
+            if (string.IsNullOrWhiteSpace(City)) { messages.Add("Stad is leeg."); }
+            if (string.IsNullOrWhiteSpace(Street)) { messages.Add("Straat is leeg."); }
+            if (HouseNumber != 0) { messages.Add("Huisnummer is 0."); }
+            ErrorMessage = string.Join("\n", messages.ToArray());
+            return string.IsNullOrWhiteSpace(ErrorMessage);
+        }
 
 		public void Register()
 		{
+            if (!CanRegister()) { return; }
+
 			User user = new User()
 			{
 				Username = Username,
