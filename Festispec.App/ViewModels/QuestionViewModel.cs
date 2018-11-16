@@ -111,12 +111,17 @@ namespace Festispec.App.ViewModels
         private void RemoveQuestionItem()
         {
             if (SelectedQuestionItem != null)
+            {
                 QuestionItems.Remove(SelectedQuestionItem);
+                _question.QuestionItem.Remove(SelectedQuestionItem.ToModel());
+            }
         }
 
         public void AddQuestionItem()
         {
-            QuestionItems.Add(new QuestionItemViewModel(new QuestionItem()));
+            QuestionItem q = new QuestionItem();
+            _question.QuestionItem.Add(q);
+            QuestionItems.Add(new QuestionItemViewModel(q));
         }
 
         private void SaveQuestion()

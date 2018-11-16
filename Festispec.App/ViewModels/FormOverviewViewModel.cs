@@ -58,11 +58,11 @@ namespace Festispec.App.ViewModels
 
             if (SelectedTemplate != null)
             {
-                foreach (QuestionViewModel q in SelectedTemplate.Questions) f.Question.Add(q.ToModel());
+                foreach (QuestionViewModel q in SelectedTemplate.Questions) f.Questions.Add(q.ToModel());
             }
             else
             {
-                f.Question.Add(new Question());
+                f.Questions.Add(new Question());
             }
             NewFormTitle = null;
             _formRepository.Add(f);

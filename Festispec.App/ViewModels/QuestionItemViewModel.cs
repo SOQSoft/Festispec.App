@@ -21,5 +21,9 @@ namespace Festispec.App.ViewModels
             }
         }
 
+        public QuestionItem ToModel()
+        {
+            return _questionItem;
+        }
     }
 }

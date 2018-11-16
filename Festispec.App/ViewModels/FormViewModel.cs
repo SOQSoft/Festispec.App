@@ -28,7 +28,7 @@ namespace Festispec.App.ViewModels
         {
             formsRepository = new FormsTestRepository();
             _form = form;
-            Questions = new ObservableCollection<QuestionViewModel>(form.Question.Select(o => new QuestionViewModel(o, count++)));
+            Questions = new ObservableCollection<QuestionViewModel>(form.Questions.Select(o => new QuestionViewModel(o, count++)));
             SelectedQuestion = Questions.FirstOrDefault();
             AddQuestionCommand = new RelayCommand(AddQuestion);
         }
@@ -70,7 +70,9 @@ namespace Festispec.App.ViewModels
         }
         private void AddQuestion()
         {
-            Questions.Add(new QuestionViewModel(new Question(), count++));
+            Question q = new Question();
+            _form.Questions.Add(q);
+            Questions.Add(new QuestionViewModel(q, count++));
         }
 
 		public Form ToModel() { return _form; }
