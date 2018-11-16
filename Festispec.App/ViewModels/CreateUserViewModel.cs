@@ -1,15 +1,19 @@
-﻿using Festispec.Domain;
+﻿using Festispec.App.Repositories;
+using Festispec.Domain;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Festispec.App.ViewModels
 {
-	public class CreateUserViewModel
+	public class CreateUserViewModel : ViewModelBase
 	{
 		public string Username { get; set; }
 		public string Password { get; set; }
-		public Role Role { get; set; }
-
+		public RoleViewModel Role { get; set; }
+        public ObservableCollection<RoleViewModel> Roles { get; set; }
 
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
@@ -43,15 +47,23 @@ namespace Festispec.App.ViewModels
 			}
 		}
 
+        private RoleRepository _roleRepo;
+
 		public RelayCommand RegisterCommand { get; set; }
+
+        public CreateUserViewModel()
+        {
+            _roleRepo = new RoleRepository();
+            Roles = new ObservableCollection<RoleViewModel>(_roleRepo.GetAll().Select(r => new RoleViewModel(r)));
+        }
 
 		private void Register()
 		{
-			User user = new User()
-			{
-				Username = Username,
-				Password = Password,
-				Role = Role
+            User user = new User()
+            {
+                Username = Username,
+                Password = Password,
+                Role = Role.ToModel()
 			};
 			Employee employee = new Employee()
 			{
