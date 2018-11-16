@@ -21,6 +21,7 @@ namespace Festispec.App.ViewModels
 			{
 				_username = value;
 				RaisePropertyChanged();
+                RegisterCommand.RaiseCanExecuteChanged();
 			}
 		}
 		public string Password
@@ -30,7 +31,8 @@ namespace Festispec.App.ViewModels
 			{
 				_password = value;
 				RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 
 		private RoleViewModel _role;
@@ -41,7 +43,8 @@ namespace Festispec.App.ViewModels
 			{
 				_role = value;
 				RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 
 		public ObservableCollection<RoleViewModel> Roles { get; }
@@ -55,7 +58,8 @@ namespace Festispec.App.ViewModels
 			{
 				_firstName = value;
 				RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 		public string LastName
 		{
@@ -64,10 +68,20 @@ namespace Festispec.App.ViewModels
 			{
 				_lastName = value;
 				RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 
-		public DateTime DateOfBirth { get; set; }
+        private DateTime _dateOfBirth;
+		public DateTime DateOfBirth {
+            get => _dateOfBirth;
+            set
+            {
+                _dateOfBirth = value;
+                RaisePropertyChanged();
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
+        }
 
 		private string _email, _phone;
 		public string Email
@@ -77,7 +91,8 @@ namespace Festispec.App.ViewModels
 			{
 				_email = value;
 				RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 		public string Phone
 		{
@@ -86,7 +101,8 @@ namespace Festispec.App.ViewModels
 			{
 				_phone = value;
 				RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 
 		private string _country, _city, _street;
@@ -97,7 +113,8 @@ namespace Festispec.App.ViewModels
 			{
 				_country = value;
 				RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 		public string City
 		{
@@ -106,7 +123,8 @@ namespace Festispec.App.ViewModels
 			{
 				_city = value;
 				RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 		public string Street
 		{
@@ -115,7 +133,8 @@ namespace Festispec.App.ViewModels
 			{
 				_street = value;
 				RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 
 		public int HouseNumber {
@@ -123,7 +142,9 @@ namespace Festispec.App.ViewModels
 			set {
 				_houseNumber = value;
 				RaisePropertyChanged();
-			} }
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
+        }
 
 		private char? _houseNumberSuffix;
 		public char? HouseNumberSuffix
@@ -133,7 +154,8 @@ namespace Festispec.App.ViewModels
 			{
                 _houseNumberSuffix = value;
                 RaisePropertyChanged();
-			}
+                RegisterCommand.RaiseCanExecuteChanged();
+            }
 		}
 
 		private IRoleRepository _roleRepo;
@@ -197,18 +219,6 @@ namespace Festispec.App.ViewModels
 			_userRepo.Add(user);
 			_employeeRepo.AddEmployee(employee);
             //TODO: Change to some page
-
-            Trace.WriteLine(user);
-            Trace.WriteLine(FirstName);
-            Trace.WriteLine(LastName);
-            Trace.WriteLine(DateOfBirth);
-            Trace.WriteLine(Email);
-            Trace.WriteLine(Phone);
-            Trace.WriteLine(Country);
-            Trace.WriteLine(City);
-            Trace.WriteLine(Street);
-            Trace.WriteLine(HouseNumber);
-            Trace.WriteLine(HouseNumberSuffix);
 		}
 
 		private void GeneratePassword()

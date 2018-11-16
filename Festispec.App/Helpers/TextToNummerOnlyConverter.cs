@@ -17,7 +17,8 @@ namespace Festispec.App.Helpers
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return int.Parse(new string(((string)value).ToCharArray().Where(c => Char.IsDigit(c)).ToArray()));
+            string str = new string(((string)value).ToCharArray().Where(c => Char.IsDigit(c)).ToArray());
+            return string.IsNullOrWhiteSpace(str) ? 0 : int.Parse(str);
         }
     }
 }

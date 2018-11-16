@@ -46,32 +46,32 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label Grid.Column="0" Grid.Row="0" Content="Gebruikersnaam"/>
-                <TextBox Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" Text="{Binding Username}"/>
+                <TextBox Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Column="0" Grid.Row="1" Content="Wachtwoord"/>
-                <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Password}"/>
+                <TextBox Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Grid.Column="1" Grid.Row="2" Content="Genereer wachtwoord" Command="{Binding GeneratePasswordCommand}" HorizontalAlignment="Stretch"/>
                 <Label Grid.Column="0" Grid.Row="3" Content="Rol"/>
                 <ComboBox Grid.Column="1" Grid.Row="3" ItemsSource="{Binding Roles}" SelectedItem="{Binding Role}" DisplayMemberPath="Name"/>
                 <Label Grid.Column="0" Grid.Row="4" Content="Voornaam"/>
-                <TextBox Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="{Binding FirstName}"/>
+                <TextBox Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Column="0" Grid.Row="5" Content="Achternaam"/>
-                <TextBox Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="{Binding LastName}"/>
+                <TextBox Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Column="0" Grid.Row="6" Content="Geboortedatum"/>
                 <DatePicker Grid.Column="1" Grid.Row="6" SelectedDate="{Binding DateOfBirth}" Width="175" HorizontalAlignment="Left"/>
                 <Label Grid.Column="0" Grid.Row="7" Content="E-Mail"/>
-                <TextBox Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="{Binding Email}"/>
+                <TextBox Grid.Column="1" Grid.Row="7" TextWrapping="Wrap" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Column="0" Grid.Row="8" Content="Telefoonnummer"/>
-                <TextBox Grid.Column="1" Grid.Row="8" TextWrapping="Wrap" Text="{Binding Phone}"/>
+                <TextBox Grid.Column="1" Grid.Row="8" TextWrapping="Wrap" Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Column="0" Grid.Row="9" Content="Land"/>
-                <TextBox Grid.Column="1" Grid.Row="9" TextWrapping="Wrap" Text="{Binding Country}"/>
+                <TextBox Grid.Column="1" Grid.Row="9" TextWrapping="Wrap" Text="{Binding Country, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Column="0" Grid.Row="10" Content="Stad"/>
-                <TextBox Grid.Column="1" Grid.Row="10" TextWrapping="Wrap" Text="{Binding City}"/>
+                <TextBox Grid.Column="1" Grid.Row="10" TextWrapping="Wrap" Text="{Binding City, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Column="0" Grid.Row="11" Content="Straat"/>
-                <TextBox Grid.Column="1" Grid.Row="11" TextWrapping="Wrap" Text="{Binding Street}"/>
+                <TextBox Grid.Column="1" Grid.Row="11" TextWrapping="Wrap" Text="{Binding Street, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Grid.Column="0" Grid.Row="12" Content="Huisnummer"/>
-                <TextBox Grid.Column="1" Grid.Row="12" TextWrapping="Wrap" Text="{Binding HouseNumber, Converter={StaticResource TextToNummer}}"/>
+                <TextBox Grid.Column="1" Grid.Row="12" TextWrapping="Wrap" Text="{Binding HouseNumber, Converter={StaticResource TextToNummer}, UpdateSourceTrigger=PropertyChanged}" Width="50" HorizontalAlignment="Left"/>
                 <Label Grid.Column="0" Grid.Row="13" Content="Toevoeging"/>
-                <TextBox Grid.Column="1" Grid.Row="13" HorizontalAlignment="Left" MaxLength="1" TextWrapping="Wrap" Width="50" Text="{Binding HouseNumberSuffix, Converter={StaticResource TextToChar}}"/>
+                <TextBox Grid.Column="1" Grid.Row="13" HorizontalAlignment="Left" MaxLength="1" TextWrapping="Wrap" Width="50" Text="{Binding HouseNumberSuffix, Converter={StaticResource TextToChar}, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </ScrollViewer>
         <Button Grid.Row="2" Content="Maak Account" Command="{Binding RegisterCommand}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="130"/>
