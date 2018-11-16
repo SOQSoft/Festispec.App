@@ -16,7 +16,6 @@ namespace Festispec.App.ViewModels
     public class LoginViewModel
     {
         public MainViewModel MainView;
-
         private string _username;
         public string Username
         {
@@ -29,6 +28,13 @@ namespace Festispec.App.ViewModels
         {
             get { return _password; }
             set { _password = value; }
+        }
+
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set { _errorMessage = value; }
         }
         public ICommand Login { get; set; }
         private UserTestRepository _users;
@@ -47,15 +53,14 @@ namespace Festispec.App.ViewModels
             }
             if(isPasswordUsernameCombinationCorrect())
             {
-                //TODO initialise 
+                //TODO geef user door aan de mainviewmodel
                 var window = new MainWindow();
                 loginWindow.Close();
                 window.ShowDialog();
             }
             else
             {
-                MessageBox.Show("Gebruikersnaam of wachtwoord is incorrect", "Alert", MessageBoxButton.OK, MessageBoxImage.None);
-                //TODO show error in LoginView
+                ErrorMessage = "Gebruikersnaam of wachtwoord is incorrect";
             }
         }
 
@@ -63,12 +68,12 @@ namespace Festispec.App.ViewModels
         {
             if (_username == null)
             {
-                MessageBox.Show("Gebruikersnaam is leeg, vul een gebruikersnaam in", "Alert", MessageBoxButton.OK, MessageBoxImage.None);
+                ErrorMessage = "Gebruikersnaam is leeg, vul een gebruikersnaam in";
                 return true ;
             }
             if(_password == null)
             {
-                MessageBox.Show("Wachtwoord is leeg, vul een wachtwoord in", "Alert", MessageBoxButton.OK, MessageBoxImage.None);
+                ErrorMessage = "Wachtwoord is leeg, vul een wachtwoord in";
                 return true;
             }
             return false;
