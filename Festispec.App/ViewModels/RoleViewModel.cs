@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Festispec.App.ViewModels
 {
-    class RoleViewModel : ViewModelBase
+    public class RoleViewModel : ViewModelBase
     {
         private Role _role;
         public string Name
