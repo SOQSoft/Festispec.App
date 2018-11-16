@@ -1,4 +1,5 @@
-﻿using Festispec.Domain;
+﻿using System;
+using Festispec.Domain;
 using GalaSoft.MvvmLight;
 
 namespace Festispec.App.ViewModels
@@ -21,5 +22,9 @@ namespace Festispec.App.ViewModels
             }
         }
 
+        public QuestionItem ToModel()
+        {
+            return _questionItem;
+        }
     }
 }
