@@ -12,7 +12,7 @@ namespace Festispec.App.ViewModels
     class UserViewModel : ViewModelBase
     {
         private User _user;
-        public UserViewModel (User User)
+        public UserViewModel(User User)
         {
             _user = User;
         }

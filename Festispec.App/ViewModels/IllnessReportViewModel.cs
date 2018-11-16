@@ -12,39 +12,35 @@ namespace Festispec.App.ViewModels
     {
         private IllnessReport _illnessReport;
 
-        private int _id;
         public int Id {
-            get => _id;
+            get => _illnessReport.Id;
             set
             {
-                _id = value;
+                _illnessReport.Id = value;
                 RaisePropertyChanged();
             }
         }
-        private DateTime _illDateTime;
         public DateTime IllDateTime {
-            get => _illDateTime;
+            get => _illnessReport.IllDateTime;
             set
             {
-                _illDateTime = value;
+                _illnessReport.IllDateTime = value;
                 RaisePropertyChanged();
             }
         }
-        private DateTime _betterDateTime;
         public DateTime BetterDateTime {
-            get => _betterDateTime;
+            get => _illnessReport.BetterDateTime;
             set
             {
-                _betterDateTime = value;
+                _illnessReport.BetterDateTime = value;
                 RaisePropertyChanged();
             }
         }
-        private Employee _employee;
         public Employee Employee {
-            get => _employee;
+            get => _illnessReport.Employee;
             set
             {
-                _employee = value;
+                _illnessReport.Employee = value;
                 RaisePropertyChanged();
             }
         }

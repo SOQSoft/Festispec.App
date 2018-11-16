@@ -13,6 +13,7 @@ namespace Festispec.Tests
     [TestFixture]
     public class CreateUserViewModelTest
     {
+        [Test]
         public void CreateUserTest()
         {
             CreateUserViewModel vm = new CreateUserViewModel();
@@ -20,13 +21,15 @@ namespace Festispec.Tests
             IUsersRepository userRepo = new UserTestRepository();
             IRoleRepository roleRepo = new RoleTestRepository();
 
+            User user = new User()
+            {
+                Username = "TestUsername",
+                Password = "TestPassword",
+                Role = roleRepo.GetAll().ElementAt(0)
+            };
             EmployeeViewModel employee = new EmployeeViewModel(new Employee()
             {
-                User = new User() {
-                    Username = "TestUsername",
-                    Password = "TestPassword",
-                    Role = roleRepo.GetAll().ElementAt(0)
-                },
+                User = user,
                 FirstName = "TestFirstName",
                 LastName = "TestLastName",
                 DateOfBirth = DateTime.Now,
@@ -35,26 +38,31 @@ namespace Festispec.Tests
                 Country = "Nederland",
                 City = "TestCity",
                 Street = "TestStreet",
-                HouseNumber = 1
+                HouseNumber = 1,
+                IllnessReports = new List<IllnessReport>()
             });
-            vm.Username = "TestUsername";
-            vm.Password = "TestPassword";
-            vm.Role = new RoleViewModel(roleRepo.GetAll().ElementAt(0));
-            vm.FirstName = "TestFirstName";
-            vm.LastName = "TestLastName";
+            employee.User.Employee = employee.ToModel();
+            vm.Username = employee.User.Username;
+            vm.Password = employee.User.Password;
+            vm.Role = new RoleViewModel(employee.User.Role);
+            vm.FirstName = employee.FirstName;
+            vm.LastName = employee.LastName;
             vm.DateOfBirth = DateTime.Now;
-            vm.Email = "test@example.com";
-            vm.Phone = "0612345678";
-            vm.Country = "Nederland";
-            vm.City = "TestCity";
-            vm.Street = "TestStreet";
-            vm.HouseNumber = 1;
+            vm.Email = employee.Email;
+            vm.Phone = employee.Phone;
+            vm.Country = employee.Country;
+            vm.City = employee.City;
+            vm.Street = employee.Street;
+            vm.HouseNumber = employee.HouseNumber;
 
             Assert.IsTrue(vm.CanRegister());
             vm.Register();
-            Assert.IsTrue(userRepo.GetAll().Any(u => u.Id == employee.User));
-            Assert.IsTrue(employeeRepo.GetAll().Contains(employee.ToModel()));
-
+            Assert.IsTrue(userRepo.GetAll().Any(u => u.Username == user.Username));
+            Assert.IsTrue(employeeRepo.GetAll().Any(e => e.Id == employee.Id));
+            userRepo.Delete(userRepo.GetAll().FirstOrDefault(u => u.Username == user.Username));
+            employeeRepo.RemoveEmployee(employeeRepo.GetAll().FirstOrDefault(e => e.Id == employee.Id));
+            Assert.IsFalse(userRepo.GetAll().Any(u => u.Username == user.Username));
+            Assert.IsFalse(employeeRepo.GetAll().Any(e => e.Id == employee.Id));
         }
     }
 }

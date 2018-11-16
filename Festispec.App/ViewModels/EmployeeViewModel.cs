@@ -12,113 +12,114 @@ namespace Festispec.App.ViewModels
     {
         private Employee _employee;
 
-        private int _id;
         public int Id {
-            get => _id;
+            get => _employee.Id;
             set
             {
-                _id = value;
+                _employee.Id = value;
                 RaisePropertyChanged();
             }
         }
 
-        private User _user;
         public User User {
-            get => _user;
-            set
+            get
+
             {
-                _user = value;
-                RaisePropertyChanged();
+                return _employee.User;
             }
-        }
-        private string _firstName;
-        public string FirstName {
-            get => _firstName;
             set
             {
-                _firstName = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _lastName;
-        public string LastName {
-            get => _lastName;
-            set
-            {
-                _lastName = value;
-                RaisePropertyChanged();
-            }
-        }
-        private DateTime _dateOfBirth;
-        public DateTime DateOfBirth {
-            get => _dateOfBirth;
-            set
-            {
-                _dateOfBirth = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _email;
-        public string Email {
-            get => _email;
-            set
-            {
-                _email = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _phone;
-        public string Phone {
-            get => _phone;
-            set
-            {
-                _phone = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _country;
-        public string Country {
-            get => _country;
-            set
-            {
-                _country = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _city;
-        public string City {
-            get => _city;
-            set
-            {
-                _city = value;
-                RaisePropertyChanged();
-            }
-        }
-        private string _street;
-        public string Street {
-            get => _street;
-            set
-            {
-                _street = value;
-                RaisePropertyChanged();
-            }
-        }
-        private int _housenumber;
-        public int HouseNumber {
-            get => _housenumber;
-            set
-            {
-                _housenumber = value;
+                _employee.User = value;
                 RaisePropertyChanged();
             }
         }
 
-        private char _housenumbersuffix;
-        public char HouseNumberSuffix {
-            get => _housenumbersuffix;
+        public string FirstName {
+            get => _employee.FirstName;
             set
             {
-                _housenumbersuffix = value;
+                _employee.FirstName = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string LastName {
+            get => _employee.LastName;
+            set
+            {
+                _employee.LastName = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public DateTime DateOfBirth {
+            get => _employee.DateOfBirth;
+            set
+            {
+                _employee.DateOfBirth = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string Email {
+            get => _employee.Email;
+            set
+            {
+                _employee.Email = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string Phone {
+            get => _employee.Phone;
+            set
+            {
+                _employee.Phone = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string Country {
+            get => _employee.Country;
+            set
+            {
+                _employee.Country = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string City {
+            get => _employee.City;
+            set
+            {
+                _employee.City = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string Street {
+            get => _employee.Street;
+            set
+            {
+                _employee.Street = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public int HouseNumber {
+            get => _employee.HouseNumber;
+            set
+            {
+                _employee.HouseNumber = value;
+                RaisePropertyChanged();
+            }
+        }
+        
+        public char HouseNumberSuffix {
+            get => _employee.HouseNumberSuffix;
+            set
+            {
+                _employee.HouseNumberSuffix = value;
                 RaisePropertyChanged();
             }
         }
@@ -135,18 +136,6 @@ namespace Festispec.App.ViewModels
         public Employee ToModel()
         {
             return _employee;
-        }
-
-        public override bool Equals(object obj)
-        {
-            var model = obj as EmployeeViewModel;
-            return model != null &&
-                   _id == model._id;
-        }
-
-        public override int GetHashCode()
-        {
-            return 1969571243 + _id.GetHashCode();
         }
     }
 }

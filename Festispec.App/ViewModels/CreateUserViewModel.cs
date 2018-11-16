@@ -3,6 +3,7 @@ using Festispec.Domain;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -202,21 +203,23 @@ namespace Festispec.App.ViewModels
 				Password = Password,
 				Role = Role.ToModel()
 			};
-			Employee employee = new Employee()
-			{
-				User = user,
-				FirstName = FirstName,
-				LastName = LastName,
-				DateOfBirth = DateOfBirth,
-				Email = Email,
-				Phone = Phone,
-				Country = Country,
-				City = City,
-				Street = Street,
-				HouseNumber = HouseNumber,
+            Employee employee = new Employee()
+            {
+                User = user,
+                FirstName = FirstName,
+                LastName = LastName,
+                DateOfBirth = DateOfBirth,
+                Email = Email,
+                Phone = Phone,
+                Country = Country,
+                City = City,
+                Street = Street,
+                HouseNumber = HouseNumber,
+                IllnessReports = new List<IllnessReport>()
 			};
 			if (_houseNumberSuffix != null) { employee.HouseNumberSuffix = (char) _houseNumberSuffix; }
-			_userRepo.Add(user);
+            user.Employee = employee;
+            _userRepo.Add(user);
 			_employeeRepo.AddEmployee(employee);
             //TODO: Change to some page
 		}

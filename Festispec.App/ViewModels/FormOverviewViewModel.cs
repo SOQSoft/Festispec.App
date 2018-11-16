@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight.CommandWpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 
@@ -46,7 +47,7 @@ namespace Festispec.App.ViewModels
 
         public bool CanEditOrRemove(bool isTemplate)
         {
-            return SelectedForm != null && ((SelectedForm.IsTemplate && Templates.Contains(SelectedForm)) || (!SelectedForm.IsTemplate && Forms.Contains(SelectedForm)));
+            return SelectedForm != null && ((isTemplate && Templates.Contains(SelectedForm)) || (!isTemplate && Forms.Contains(SelectedForm)));
         }
 
         public void Create(bool isTemplate)

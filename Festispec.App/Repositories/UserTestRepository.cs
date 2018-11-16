@@ -10,6 +10,8 @@ namespace Festispec.App.Repositories
     public class UserTestRepository : IUsersRepository
     {
         private static List<User> Users { get; set; } = new List<User>();
+        private static bool init = false;
+
         public UserTestRepository()
         {
             InitialiseDate();
@@ -17,6 +19,9 @@ namespace Festispec.App.Repositories
 
         public void InitialiseDate()
         {
+            if (init) { return; }
+            else { init = true; }
+
             User user = new User();
             user.Password = "test";
             user.Username = "test1";

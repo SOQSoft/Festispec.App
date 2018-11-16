@@ -10,7 +10,7 @@ namespace Festispec.Tests
     {
         public static void Main(string[] args)
         {
-
+            new CreateUserViewModelTest().CreateUserTest();
         }
     }
 }
