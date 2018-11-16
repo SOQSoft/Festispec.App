@@ -104,9 +104,24 @@ namespace Festispec.App.ViewModels
             }
         }
         private int _housenumber;
-        public int HouseNumber { get; set; }
+        public int HouseNumber {
+            get => _housenumber;
+            set
+            {
+                _housenumber = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private char _housenumbersuffix;
-        public char HouseNumberSuffix { get; set; }
+        public char HouseNumberSuffix {
+            get => _housenumbersuffix;
+            set
+            {
+                _housenumbersuffix = value;
+                RaisePropertyChanged();
+            }
+        }
         
         public ObservableCollection<IllnessReportViewModel> IllnessReports { get; set; }
 
@@ -120,6 +135,18 @@ namespace Festispec.App.ViewModels
         public Employee ToModel()
         {
             return _employee;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var model = obj as EmployeeViewModel;
+            return model != null &&
+                   _id == model._id;
+        }
+
+        public override int GetHashCode()
+        {
+            return 1969571243 + _id.GetHashCode();
         }
     }
 }

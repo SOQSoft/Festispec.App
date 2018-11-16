@@ -178,7 +178,7 @@ namespace Festispec.App.ViewModels
             DateOfBirth = DateTime.Now;
 		}
 
-		private bool CanRegister()
+		public bool CanRegister()
 		{
 			return !string.IsNullOrWhiteSpace(Username)
 				&& !string.IsNullOrWhiteSpace(Password)
@@ -194,7 +194,7 @@ namespace Festispec.App.ViewModels
 				&& HouseNumber != 0;
 		}
 
-		private void Register()
+		public void Register()
 		{
 			User user = new User()
 			{

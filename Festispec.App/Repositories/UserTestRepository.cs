@@ -7,7 +7,7 @@ using Festispec.Domain;
 
 namespace Festispec.App.Repositories
 {
-    class UserTestRepository : IUsersRepository
+    public class UserTestRepository : IUsersRepository
     {
         private static List<User> Users { get; set; } = new List<User>();
         public UserTestRepository()
