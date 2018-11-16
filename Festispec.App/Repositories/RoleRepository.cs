@@ -22,7 +22,10 @@ namespace Festispec.App.Repositories
             if (init) { return; }
             else { init = true; }
 
-            //TODO: 
+            //Guus and Darryll will add te proper roles and permission system
+            Roles.Add(new Role() { Name = "Role1" });
+            Roles.Add(new Role() { Name = "Role2" });
+            Roles.Add(new Role() { Name = "Role3" });
         }
 
         public ICollection<Role> GetAll()
