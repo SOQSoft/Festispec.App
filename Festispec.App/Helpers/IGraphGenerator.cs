@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.DataVisualization
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Web.Helpers;
 
 namespace Festispec.App.Helpers
 {
@@ -14,7 +16,7 @@ namespace Festispec.App.Helpers
 			
 		}
 
-		protected abstract MarshalByRefObject.Component.Control.Chart GenerateChart();
+		protected abstract Chart GenerateChart();
 
 		private void GraphToPNG
 	}

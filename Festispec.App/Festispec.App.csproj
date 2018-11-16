@@ -84,6 +84,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helpers\IGraphGenerator.cs" />
     <Compile Include="Helpers\QuestionTypeToControlConverter.cs" />
     <Compile Include="Repositories\FormsTestRepository.cs" />
     <Compile Include="Repositories\IFormsRepository.cs" />
