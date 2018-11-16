@@ -91,6 +91,7 @@
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\FormsTestRepository.cs" />
     <Compile Include="Repositories\IFormsRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="ViewModels\CreateUserViewModel.cs" />
     <Compile Include="Repositories\IUsersRepository.cs" />
     <Compile Include="Repositories\UserTestRepository.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\QuestionItemViewModel.cs" />
     <Compile Include="ViewModels\QuestionViewModel.cs" />
+    <Compile Include="ViewModels\RoleViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="Views\Controls\CreateOptions.xaml.cs">
       <DependentUpon>CreateOptions.xaml</DependentUpon>
