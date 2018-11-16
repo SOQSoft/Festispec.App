@@ -96,7 +96,7 @@ namespace Festispec.App.ViewModels
         public QuestionItemViewModel SelectedQuestionItem { get; set; }
         //AddQuestionItem
 
-        private IFormsRepository formsRepository;
+        private IFormRepository formsRepository;
         public QuestionViewModel(Question question, int count = 0)
         {
             formsRepository = new FormsTestRepository();

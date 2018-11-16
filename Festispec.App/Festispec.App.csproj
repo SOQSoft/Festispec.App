@@ -91,7 +91,7 @@
     <Compile Include="Repositories\EmployeeTestRepository.cs" />
     <Compile Include="Repositories\FormsTestRepository.cs" />
     <Compile Include="Repositories\IEmployeeRepository.cs" />
-    <Compile Include="Repositories\IFormsRepository.cs" />
+    <Compile Include="Repositories\IFormRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\RoleTestRepository.cs" />
     <Compile Include="ViewModels\CreateUserViewModel.cs" />

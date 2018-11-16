@@ -20,7 +20,7 @@ namespace Festispec.App.ViewModels
     {
         public ObservableCollection<QuestionViewModel> Questions { get; set; }
         private Form _form;
-        private IFormsRepository formsRepository;
+        private IFormRepository formsRepository;
         public QuestionViewModel SelectedQuestion { get; set; }
         public ICommand AddQuestionCommand { get; set; }
         private int count = 0;

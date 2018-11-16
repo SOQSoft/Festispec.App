@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Festispec.App.Repositories
 {
-    public class FormsTestRepository : IFormsRepository
+    public class FormsTestRepository : IFormRepository
     {
         private static List<Form> Forms { get; set; } = new List<Form>();
         private static bool init = false;

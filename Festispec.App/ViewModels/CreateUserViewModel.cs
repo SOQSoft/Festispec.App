@@ -47,13 +47,17 @@ namespace Festispec.App.ViewModels
 			}
 		}
 
-        private RoleRepository _roleRepo;
+        private IRoleRepository _roleRepo;
+        private IEmployeeRepository _employeeRepo;
+        private IUsersRepository _userRepo;
 
 		public RelayCommand RegisterCommand { get; set; }
 
         public CreateUserViewModel()
         {
-            _roleRepo = new RoleRepository();
+            _roleRepo = new RoleTestRepository();
+            _employeeRepo = new EmployeeTestRepository();
+            _userRepo = new UserTestRepository();
             Roles = new ObservableCollection<RoleViewModel>(_roleRepo.GetAll().Select(r => new RoleViewModel(r)));
         }
 
@@ -79,7 +83,8 @@ namespace Festispec.App.ViewModels
 				HouseNumber = HouseNumber,
 				HouseNumberSuffix = _houseNumberSuffix,
 			};
-			
+            _userRepo.Add(user);
+            _employeeRepo.AddEmployee(employee);
 		}
 	}
 }

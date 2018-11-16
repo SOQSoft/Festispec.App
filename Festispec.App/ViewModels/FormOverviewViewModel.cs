@@ -12,7 +12,7 @@ namespace Festispec.App.ViewModels
 {
     public class FormOverviewViewModel : ViewModelBase
     {
-        private readonly IFormsRepository _formRepository;
+        private readonly IFormRepository _formRepository;
 
         public ObservableCollection<FormViewModel> Forms { get; }
         public ObservableCollection<FormViewModel> Templates { get; }
