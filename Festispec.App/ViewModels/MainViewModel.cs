@@ -33,11 +33,11 @@ namespace Festispec.App.ViewModels
         {
             QuestionPageBtn = new RelayCommand(() => ChangePage(Pages.FormList));
             TemplatePageBtn = new RelayCommand(() => ChangePage(Pages.TemplateList));
-            AddQuestion = new RelayCommand(ViewCreateQuestion);
+            //TODO: Page missing? Original page: CreateQuestion.xaml
+            //AddQuestion = new RelayCommand(() => ChangePage(Pages.CreateQuestion));
             ChangePage(Pages.CreateUser);
         }
-
-        //TODO Temporary page system change to a navigation service 
+        
         public void ChangePage(Pages page)
         {
             switch (page)
@@ -53,27 +53,11 @@ namespace Festispec.App.ViewModels
                     break;
                 case Pages.CreateUser:
                     CurrentPage = "/Views/CreateUser.xaml";
-                    //TODO: Make a decision, one or the other.
-                    DisplayPage = new Uri("CreateUser.xaml", UriKind.Relative);
+                    break;
+                case Pages.QuestionListHome:
+                    CurrentPage = "/Views/QuestionListHome.xaml";
                     break;
             }
-        }
-        
-        public void ShowTemplatePage()
-        {
-            DisplayPage = new Uri("TemplateList.xaml", UriKind.Relative);
-            RaisePropertyChanged("DisplayPage");
-        }
-
-        public void ViewCreateQuestion()
-        {
-            DisplayPage = new Uri("CreateQuestion.xaml", UriKind.Relative);
-            RaisePropertyChanged("DisplayPage");
-        }
-        public void ViewQuestions()
-        {
-            DisplayPage = new Uri("QuestionListHome.xaml", UriKind.Relative);
-            RaisePropertyChanged("DisplayPage");
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Festispec.App.Views
         EditForm,
         FormList,
         TemplateList,
-        CreateUser
+        CreateUser,
+        QuestionListHome
     }
 }
