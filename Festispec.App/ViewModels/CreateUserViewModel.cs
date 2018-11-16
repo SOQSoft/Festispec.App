@@ -152,6 +152,8 @@ namespace Festispec.App.ViewModels
 			Roles = new ObservableCollection<RoleViewModel>(_roleRepo.GetAll().Select(r => new RoleViewModel(r)));
 			RegisterCommand = new RelayCommand(Register, CanRegister);
 			GeneratePasswordCommand = new RelayCommand(GeneratePassword);
+            Role = Roles[0];
+            DateOfBirth = DateTime.Now;
 		}
 
 		private bool CanRegister()

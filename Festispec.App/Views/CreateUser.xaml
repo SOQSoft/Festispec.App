@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Festispec.App.Views"
         xmlns:c="clr-namespace:Festispec.App.Helpers"
         mc:Ignorable="d"
-        Title="CreateUser" Height="450" Width="800">
+        Title="CreateUser" Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource Locator}, Path=CreateUserViewModel}">
     <Page.Resources>
         <c:TextToNummerOnlyConverter x:Key="TextToNummer"/>
         <c:TextToFirstCharConverter x:Key="TextToChar"/>

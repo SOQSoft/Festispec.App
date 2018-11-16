@@ -12,7 +12,7 @@ namespace Festispec.App.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((char)value).ToString();
+            return value == null ? string.Empty : ((char)value).ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
