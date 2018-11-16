@@ -12,24 +12,119 @@ namespace Festispec.App.ViewModels
 	{
 		private readonly Random _random;
 
-		public string Username { get; set; }
-		public string Password { get; set; }
-		public RoleViewModel Role { get; set; }
-		public ObservableCollection<RoleViewModel> Roles { get; set; }
+		private string _username, _password;
+		public string Username
+		{
+			get => _username;
+			set
+			{
+				_username = value;
+				RaisePropertyChanged();
+			}
+		}
+		public string Password
+		{
+			get => _password;
+			set
+			{
+				_password = value;
+				RaisePropertyChanged();
+			}
+		}
 
-		public string FirstName { get; set; }
-		public string LastName { get; set; }
+		private RoleViewModel _role;
+		public RoleViewModel Role
+		{
+			get => _role;
+			set
+			{
+				_role = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		public ObservableCollection<RoleViewModel> Roles { get; }
+
+
+		private string _firstName, _lastName;
+		public string FirstName
+		{
+			get => _firstName;
+			set
+			{
+				_firstName = value;
+				RaisePropertyChanged();
+			}
+		}
+		public string LastName
+		{
+			get => _lastName;
+			set
+			{
+				_lastName = value;
+				RaisePropertyChanged();
+			}
+		}
 
 		public DateTime DateOfBirth { get; set; }
 
-		public string Email { get; set; }
-		public string Phone { get; set; }
-		public string Country { get; set; }
-		public string City { get; set; }
-		public string Street { get; set; }
-		public int HouseNumber { get; set; }
-		private char? _houseNumberSuffix;
+		private string _email, _phone;
+		public string Email
+		{
+			get => _email;
+			set
+			{
+				_email = value;
+				RaisePropertyChanged();
+			}
+		}
+		public string Phone
+		{
+			get => _phone;
+			set
+			{
+				_phone = value;
+				RaisePropertyChanged();
+			}
+		}
 
+		private string _country, _city, _street;
+		private int _houseNumber;
+		public string Country
+		{
+			get => _country; set
+			{
+				_country = value;
+				RaisePropertyChanged();
+			}
+		}
+		public string City
+		{
+			get => _city;
+			set
+			{
+				_city = value;
+				RaisePropertyChanged();
+			}
+		}
+		public string Street
+		{
+			get => _street;
+			set
+			{
+				_street = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		public int HouseNumber {
+			get => _houseNumber;
+			set {
+				_houseNumber = value;
+				RaisePropertyChanged();
+			} }
+
+		private char? _houseNumberSuffix;
 		public string HouseNumberSuffix
 		{
 			get => Convert.ToString(_houseNumberSuffix);
