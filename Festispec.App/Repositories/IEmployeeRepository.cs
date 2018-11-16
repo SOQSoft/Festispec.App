@@ -14,5 +14,7 @@ namespace Festispec.App.Repositories
 		void RemoveEmployee(Employee employee);
 
 		ICollection<Employee> GetAll();
+
+		ICollection<Employee> Where(Func<Employee, bool> func);
 	}
 }

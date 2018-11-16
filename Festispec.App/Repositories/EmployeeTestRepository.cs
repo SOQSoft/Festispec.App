@@ -20,5 +20,10 @@ namespace Festispec.App.Repositories
 		}
 
 		public ICollection<Employee> GetAll() { return _employees; }
+
+		public ICollection<Employee> Where(Func<Employee, bool> func)
+		{
+			return _employees.Where(func).ToList();
+		}
 	}
 }

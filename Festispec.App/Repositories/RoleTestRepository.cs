@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Festispec.App.Repositories
 {
-    class RoleRepository:IRoleRepository
+    class RoleTestRepository:IRoleRepository
     {
         private static List<Role> Roles { get; set; } = new List<Role>();
         private static bool init = false;
 
-        public RoleRepository()
+        public RoleTestRepository()
         {
             InitializeData();
         }
