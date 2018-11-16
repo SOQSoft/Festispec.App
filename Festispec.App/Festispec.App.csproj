@@ -136,6 +136,7 @@
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages.cs" />
     <Compile Include="Views\TemplateList.xaml.cs">
       <DependentUpon>TemplateList.xaml</DependentUpon>
     </Compile>
