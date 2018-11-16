@@ -87,6 +87,7 @@
     <Compile Include="Helpers\QuestionTypeToControlConverter.cs" />
     <Compile Include="Repositories\FormsTestRepository.cs" />
     <Compile Include="Repositories\IFormsRepository.cs" />
+    <Compile Include="ViewModels\CreateUserViewModel.cs" />
     <Compile Include="ViewModels\FormOverviewViewModel.cs" />
     <Compile Include="ViewModels\FormViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -125,7 +126,7 @@
     </Compile>
     <Compile Include="Views\TemplateList.xaml.cs">
       <DependentUpon>TemplateList.xaml</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Views\QuestionListHome.xaml.cs">
       <DependentUpon>QuestionListHome.xaml</DependentUpon>
     </Compile>
