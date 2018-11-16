@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Festispec.App.Repositories
 {
-	public class EmployeeRepository
+	public class EmployeeTestRepository:IEmployeeRepository
 	{
 		private readonly static List<Employee> _employees = new List<Employee>();
 
@@ -19,6 +19,6 @@ namespace Festispec.App.Repositories
 			_employees.Remove(employee);
 		}
 
-		public ICollection<Employee> GetAll { get { return _employees; } }
+		public ICollection<Employee> GetAll() { return _employees; }
 	}
 }
