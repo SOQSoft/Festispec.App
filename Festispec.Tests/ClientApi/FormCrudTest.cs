@@ -1,4 +1,5 @@
-﻿using Festispec.ClientApi;
+﻿using Festispec.ApiClient;
+
 using Festispec.Domain;
 using NUnit.Framework;
 using System;
@@ -15,21 +16,17 @@ namespace Festispec.Tests.ClientApi
         private readonly FormsClient formsClient;
         public FormCrudTest()
         {
-            formsClient = new FormsClient("http://localhost:5000");
+            formsClient = new FormsClient("https://localhost:5001");
         }
         [Test]
         public void CreateForm()
         {
-            int id = 20;
-            int qid = 20;
             Form form = new Form
             {
-                Id = id++,
                 Name = "pure aids"
             };
             form.Question.Add(new Question()
             {
-                Id = qid++,
                 FormId = form.Id,
                 Description = "lolxd1",
                 Text = "Wanneer kwamen koeien",
@@ -37,7 +34,6 @@ namespace Festispec.Tests.ClientApi
             });
             form.Question.Add(new Question()
             {
-                Id = qid++,
                 FormId = form.Id,
                 Description = "lolxd2",
                 Text = "Wanneer kwamen koeie2n2",
@@ -45,7 +41,6 @@ namespace Festispec.Tests.ClientApi
             });
             form.Question.Add(new Question()
             {
-                Id = qid++,
                 FormId = form.Id,
                 Description = "lolxd2",
                 Text = "Wanneer kwamen koeie2n2",

@@ -52,8 +52,8 @@ namespace Festispec.Api
             {
                 app.UseHsts();
             }
-            app.UseMiddleware<RequestResponseLoggingMiddleware>();
-            app.UseHttpsRedirection();
+            //app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
         }
