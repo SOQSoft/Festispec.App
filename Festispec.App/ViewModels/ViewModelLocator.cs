@@ -24,6 +24,7 @@ namespace Festispec.App.ViewModels
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<FormOverviewViewModel>();
+            SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
@@ -31,6 +32,7 @@ namespace Festispec.App.ViewModels
         public FormOverviewViewModel FormOverview => ServiceLocator.Current.GetInstance<FormOverviewViewModel>();
         public FormViewModel FormViewModel => FormOverview.SelectedForm;
         public QuestionViewModel QuestionViewmodel => FormViewModel.SelectedQuestion;
+        public LoginViewModel LoginViewModel => ServiceLocator.Current.GetInstance<LoginViewModel>();
 
         public static void Cleanup()
         {
