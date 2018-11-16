@@ -22,15 +22,15 @@ namespace Festispec.App.ViewModels
 		public string City { get; set; }
 		public string Street { get; set; }
 		public int HouseNumber { get; set; }
-		private char _houseNumberFix;
+		private char _houseNumberSuffix;
 		public string HouseNumberSuffix
 		{
-			get => Convert.ToString(_houseNumberFix);
+			get => Convert.ToString(_houseNumberSuffix);
 			set
 			{
 				try
 				{
-					_houseNumberFix = Convert.ToChar(value);
+					_houseNumberSuffix = Convert.ToChar(value);
 				}
 				catch (ArgumentNullException e)
 				{
@@ -56,7 +56,18 @@ namespace Festispec.App.ViewModels
 			Employee employee = new Employee()
 			{
 				User = user,
+				FirstName = FirstName,
+				LastName = LastName,
+				DateOfBirth = DateOfBirth,
+				Email = Email,
+				Phone = Phone,
+				Country = Country,
+				City = City,
+				Street = Street,
+				HouseNumber = HouseNumber,
+				HouseNumberSuffix = _houseNumberSuffix,
 			};
+			
 		}
 	}
 }
