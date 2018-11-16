@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace Festispec.App.ViewModels
 {
-    public class LoginViewModel
+    public class LoginViewModel : ViewModelBase
     {
         public MainViewModel MainView;
         private string _username;
@@ -61,6 +61,7 @@ namespace Festispec.App.ViewModels
             else
             {
                 ErrorMessage = "Gebruikersnaam of wachtwoord is incorrect";
+                RaisePropertyChanged("ErrorMessage");
             }
         }
 
@@ -69,11 +70,13 @@ namespace Festispec.App.ViewModels
             if (_username == null)
             {
                 ErrorMessage = "Gebruikersnaam is leeg, vul een gebruikersnaam in";
+                RaisePropertyChanged("ErrorMessage");
                 return true ;
             }
             if(_password == null)
             {
                 ErrorMessage = "Wachtwoord is leeg, vul een wachtwoord in";
+                RaisePropertyChanged("ErrorMessage");
                 return true;
             }
             return false;
