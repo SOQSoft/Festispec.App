@@ -1,4 +1,5 @@
 ﻿using Festispec.App.Repositories;
+using Festispec.App.Views;
 using Festispec.Domain;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -77,7 +78,7 @@ namespace Festispec.App.ViewModels
         }
         public void Edit(bool isTemplate)
         {
-            _viewModelLocator.Main.GoToEditFormPage();
+            _viewModelLocator.Main.ChangePage(Pages.EditForm);
         }
 
         public void Remove(bool isTemplate)
