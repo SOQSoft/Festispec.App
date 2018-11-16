@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Festispec.Domain.src;
 
-namespace Festispec.Database.Models
+namespace Festispec.Domain
 {
     public class Question
     {

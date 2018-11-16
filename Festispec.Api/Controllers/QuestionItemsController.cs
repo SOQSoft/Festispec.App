@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Festispec.Database;
-using Festispec.Database.Models;
+using Festispec.Api.Database;
+using Festispec.Domain;
 
 namespace Festispec.Api.Controllers
 {
@@ -84,7 +84,7 @@ namespace Festispec.Api.Controllers
 
         // POST: api/QuestionItems
         [HttpPost]
-        public async Task<IActionResult> PostQuestionItem([FromBody] QuestionItem questionItem)
+        public async Task<IActionResult> PostQuestionItem(QuestionItem questionItem)
         {
             if (!ModelState.IsValid)
             {

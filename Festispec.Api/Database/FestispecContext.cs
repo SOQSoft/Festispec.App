@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Festispec.Domain;
-//
+﻿using Festispec.Domain;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Festispec.Database
+namespace Festispec.Api.Database
 {
     public class FestispecContext : DbContext
     {
@@ -14,6 +14,11 @@ namespace Festispec.Database
         //public DbSet<Role> Roles { get; set; }
         //public DbSet<Customer> Customers { get; set; }
         //public DbSet<Application> Applications { get; set; }
+        public FestispecContext(DbContextOptions<FestispecContext> options) : base(options) { }
+        public FestispecContext()
+        {
+
+        }
 
         public DbSet<Form> Forms { get; set; }
         public DbSet<QuestionItem> QuestionItems { get; set; }
@@ -23,5 +28,6 @@ namespace Festispec.Database
         {
             optionsBuilder.UseSqlServer(@"Server=.;Database=Festispec.db;Trusted_Connection=True;");
         }
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Festispec.App.Repositories;
 using Festispec.App.Views;
-using Festispec.Database.Models;
+using Festispec.Domain;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System;

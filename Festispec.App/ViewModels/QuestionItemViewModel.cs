@@ -1,4 +1,4 @@
-﻿using Festispec.Database.Models;
+﻿using Festispec.Domain;
 using GalaSoft.MvvmLight;
 
 namespace Festispec.App.ViewModels
