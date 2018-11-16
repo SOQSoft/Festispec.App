@@ -25,7 +25,8 @@
         <Label Grid.Column="1" Grid.Row="1" Content="Gebruikersnaam" HorizontalAlignment="Center" Height="25" VerticalAlignment="Top" Width="Auto"/>
         <TextBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Height="25" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Bottom" Width="200"/>
         <Label Grid.Column="1" Grid.Row="2" Content="Wachtwoord" HorizontalAlignment="Center" Height="25" VerticalAlignment="Top" Width="Auto"/>
-        <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="25" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Bottom" Width="200"/>
+        <TextBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="25" TextWrapping="Wrap" Text="{Binding Password}" VerticalAlignment="Bottom" Width="200" FontFamily="ms-appx:///Assets/PassDot.ttf#PassDot"
+    FontSize="35"/>
         <Button Grid.Column="1" Grid.Row="3" Content="Inloggen" Command="{Binding Login}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="130"/>
         <Button Grid.Column="1" Grid.Row="4" Content="Wachtwoord vergeten" Command="{Binding ForgotPassword}" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="130"/>
 
