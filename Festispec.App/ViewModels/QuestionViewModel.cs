@@ -13,7 +13,7 @@ namespace Festispec.App.ViewModels
 {
     public class QuestionViewModel : ViewModelBase
     {
-        public string Header { get { return $"Vraag {_count + 1}"; } }
+        public string Header { get { return $"Vraag {OrderNr + 1}"; } }
         public QuestionType[] QuestionTypes => (QuestionType[])Enum.GetValues(typeof(QuestionType));
         public int Id
         {
@@ -84,11 +84,19 @@ namespace Festispec.App.ViewModels
                 }
             }
         }
+        public int OrderNr
+        {
+            get => _question.OrderNr;
+            set
+            {
+                _question.OrderNr = value;
+                base.RaisePropertyChanged("Header");
+            }
+        }
+
         public ObservableCollection<QuestionItemViewModel> QuestionItems { get; set; }
 
         private readonly Question _question;
-        private readonly int _count;
-
         public event PropertyChangedEventHandler PropertyChanged;
         public RelayCommand SaveQuestionCommand { get; private set; }
         public RelayCommand AddQuestionItemCommand { get; private set; }
@@ -97,11 +105,11 @@ namespace Festispec.App.ViewModels
         //AddQuestionItem
 
         private IFormsRepository formsRepository;
-        public QuestionViewModel(Question question, int count = 0)
+        public QuestionViewModel(Question question, int orderNr = 0)
         {
             formsRepository = new FormsTestRepository();
             _question = question;
-            _count = count;
+            OrderNr = orderNr;
             QuestionItems = new ObservableCollection<QuestionItemViewModel>(question.QuestionItem.Select(o => new QuestionItemViewModel(o)));
             SaveQuestionCommand = new RelayCommand(SaveQuestion);
             AddQuestionItemCommand = new RelayCommand(AddQuestionItem);
@@ -131,6 +139,7 @@ namespace Festispec.App.ViewModels
 
         public Question ToModel()
         {
+            _question.QuestionItem = QuestionItems.Select(o => o.ToModel()).ToList();
             return _question;
         }
     }

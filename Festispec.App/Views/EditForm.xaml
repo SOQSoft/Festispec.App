@@ -12,7 +12,7 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       DataContext="{Binding Source={StaticResource Locator}, Path=FormViewModel}">
     <Grid Background="#FFA8A5A5" Margin="0,0,0,-35">
 
-        <TabControl  ItemsSource="{Binding Questions}" HorizontalAlignment="Left" Height="608" Margin="10,57,0,0" VerticalAlignment="Top" Width="1540" TabStripPlacement="Left" x:Name="MainTabControl">
+        <TabControl  ItemsSource="{Binding Questions}" SelectedItem="{Binding SelectedQuestion}" HorizontalAlignment="Left" Height="547" Margin="10,57,0,0" VerticalAlignment="Top" Width="1540" TabStripPlacement="Left" x:Name="MainTabControl">
             <TabControl.ItemTemplate>
                 <!-- this is the header template-->
                 <DataTemplate>
@@ -35,8 +35,11 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 </DataTemplate>
             </TabControl.ContentTemplate>
         </TabControl>
-        <Button Content="Voeg vraag toe" Margin="1441,57,24,550" Command="{Binding AddQuestionCommand}"/>
+        <Button Content="Voeg vraag toe" Margin="1455,57,10,550" Command="{Binding AddQuestionCommand}"/>
         <Label Content="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="91,-19,0,0" FontSize="48" Height="71"/>
+        <Button Content="Verwijder huidige vraag" Margin="1322,57,105,550" Command="{Binding RemoveQuestionCommand}"/>
+        <Button Content="▲" Margin="1271,57,238,550" Command="{Binding UpQuestionCommand}"/>
+        <Button Content="▼" Margin="1220,57,289,550" Command="{Binding DownQuestionCommand}"/>
 
     </Grid>
 </Page>
