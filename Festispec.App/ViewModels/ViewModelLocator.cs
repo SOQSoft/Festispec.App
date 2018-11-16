@@ -13,6 +13,7 @@
 */
 
 using CommonServiceLocator;
+using Festispec.App.Repositories;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
@@ -23,8 +24,10 @@ namespace Festispec.App.ViewModels
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            SimpleIoc.Default.Register<ViewModelLocator>(() => this);
             SimpleIoc.Default.Register<FormOverviewViewModel>();
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<IFormsRepository, FormsTestRepository>();
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();

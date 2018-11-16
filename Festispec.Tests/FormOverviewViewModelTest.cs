@@ -16,8 +16,8 @@ namespace Festispec.Tests
         [Test]
         public void ViewModelSetupTest()
         {
-            FormOverviewViewModel model = new FormOverviewViewModel();
             IFormsRepository repo = new FormsTestRepository();
+            FormOverviewViewModel model = new FormOverviewViewModel(repo, new ViewModelLocator());
             Assert.AreEqual(repo.GetAll().Where(f => f.IsTemplate).Select(f => new FormViewModel(f)), model.Templates);
             Assert.AreEqual(repo.GetAll().Where(f => !f.IsTemplate).Select(f => new FormViewModel(f)), model.Forms);
         }
@@ -26,9 +26,9 @@ namespace Festispec.Tests
         [TestCase(true), TestCase(false)]
         public void CRUDTest(bool isTemplate)
         {
-            FormOverviewViewModel model = new FormOverviewViewModel();
-            var formList = isTemplate ? model.Templates : model.Forms;
             IFormsRepository repo = new FormsTestRepository();
+            FormOverviewViewModel model = new FormOverviewViewModel(repo, new ViewModelLocator());
+            var formList = isTemplate ? model.Templates : model.Forms;
 
             string name = "TestForm";
             FormViewModel newForm = new FormViewModel(new Form() { Name = name, IsTemplate = isTemplate });

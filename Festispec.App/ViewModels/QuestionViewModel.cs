@@ -8,6 +8,7 @@ using Festispec.App.Repositories;
 using Festispec.Domain;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace Festispec.App.ViewModels
 {
@@ -107,7 +108,7 @@ namespace Festispec.App.ViewModels
         private IFormsRepository formsRepository;
         public QuestionViewModel(Question question, int orderNr = 0)
         {
-            formsRepository = new FormsTestRepository();
+            formsRepository = SimpleIoc.Default.GetInstance<IFormsRepository>();
             _question = question;
             OrderNr = orderNr;
             QuestionItems = new ObservableCollection<QuestionItemViewModel>(question.QuestionItem.Select(o => new QuestionItemViewModel(o)));

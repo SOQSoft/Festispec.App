@@ -32,15 +32,15 @@ namespace Festispec.App.ViewModels
         public ICommand CreateCommand { get; private set; }
         private ViewModelLocator _viewModelLocator;
 
-        public FormOverviewViewModel()
+        public FormOverviewViewModel(IFormsRepository formsRepository, ViewModelLocator viewModelLocator)
         {
-            _formRepository = new FormsTestRepository();
+            _formRepository = formsRepository;
             Forms = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(o => !o.IsTemplate).Select(o => new FormViewModel(o)));
             Templates = new ObservableCollection<FormViewModel>(_formRepository.GetAll().Where(o => o.IsTemplate).Select(o => new FormViewModel(o)));
             EditCommand = new RelayCommand<bool>(Edit, CanEditOrRemove);
             RemoveCommand = new RelayCommand<bool>(Remove, CanEditOrRemove);
             CreateCommand = new RelayCommand<bool>(Create);
-            _viewModelLocator = new ViewModelLocator();
+            _viewModelLocator = viewModelLocator;
         }
 
         public bool CanEditOrRemove(bool isTemplate)

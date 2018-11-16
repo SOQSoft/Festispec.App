@@ -3,6 +3,7 @@ using Festispec.App.Views;
 using Festispec.Domain;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,7 +31,7 @@ namespace Festispec.App.ViewModels
         private int count = 0;
         public FormViewModel(Form form)
         {
-            formsRepository = new FormsTestRepository();
+            formsRepository = SimpleIoc.Default.GetInstance<IFormsRepository>();
             _form = form;
             Questions = new ObservableCollection<QuestionViewModel>(form.Question.OrderBy( o => o.OrderNr).Select(o => new QuestionViewModel(o, count++)));
             SelectedQuestion = Questions.FirstOrDefault();
@@ -40,7 +41,7 @@ namespace Festispec.App.ViewModels
             DownQuestionCommand = new RelayCommand(DownQuestion);
 
         }
-
+     
         public void UpQuestion()
         {
             if (SelectedQuestion.OrderNr == Questions.Count - 1)
