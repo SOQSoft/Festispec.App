@@ -47,7 +47,7 @@ namespace Festispec.App.Repositories
 				}
 			};
 			user.Employee.User = user;
-
+			AddEmployee(user.Employee);
 			id++;
 
 			user = new User()
@@ -71,7 +71,7 @@ namespace Festispec.App.Repositories
 				}
 			};
 			user.Employee.User = user;
-
+			AddEmployee(user.Employee);
 			id++;
 
 			user = new User()
@@ -95,6 +95,7 @@ namespace Festispec.App.Repositories
 				}
 			};
 			user.Employee.User = user;
+			AddEmployee(user.Employee);
 		}
 
 			public void AddEmployee(Employee employee)

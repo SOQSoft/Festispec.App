@@ -84,12 +84,12 @@ namespace Festispec.App.ViewModels
 
         public bool isPasswordUsernameCombinationCorrect()
         {
-            User InputUser = _users.GetAll().FirstOrDefault(u => u.Username == _username);
+            User InputUser = _users.GetAll().FirstOrDefault(u => u.Username.Equals(_username));
             if (InputUser == null)
             {
                 return false;
             }
-            if(InputUser.Password == _password)
+            if(InputUser.Password.Equals(_password))
             {
                 return true;
             }
