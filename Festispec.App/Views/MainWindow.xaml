@@ -6,21 +6,23 @@
         xmlns:local="clr-namespace:Festispec.App.Views"
         mc:Ignorable="d"
         Title="FestiSpec" Height="800" Width="1600" Background="#FFA8A5A5" ResizeMode="NoResize" Icon="festispec_icon.png"
-              DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     <Grid>
 
         <Rectangle Fill="#495469" HorizontalAlignment="Left" Height="85" Stroke="Black" VerticalAlignment="Top" Width="1592"/>
 
         <Button Command="{Binding TaskPageBtn}" Content="Opdrachten" HorizontalAlignment="Left" Height="60" Margin="370,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
         <Button Command="{Binding CustomerPageBtn}" Content="Klanten" HorizontalAlignment="Left" Height="60" Margin="607.92,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
-        <Button Command="{Binding InspectorPageBtn}" Content="Inspecteurs" HorizontalAlignment="Left" Height="60" Margin="845.84,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
+        <Button Command="{Binding AddQuestion}" Content="Nieuwe Vragenlijst" HorizontalAlignment="Left" Height="60" Margin="845.84,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
         <Button Command="{Binding QuestionPageBtn}" Content="Vragenlijsten" HorizontalAlignment="Left" Height="60" Margin="1083.76,10,0,0" VerticalAlignment="Top" Width="237.92" FontSize="24"/>
         <Button Command="{Binding TemplatePageBtn}" Content="Templates" HorizontalAlignment="Left" Height="60" Margin="1321.68,10,0,0" VerticalAlignment="Top" Width="248.32" FontSize="24"/>
 
-        <TextBlock HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" Text="FestiSpec" VerticalAlignment="Top" Width="300" FontSize="68" Foreground="Black" Margin="30,-14,0,0"/>
-        <Frame Content="ApplicationFrame" HorizontalAlignment="Left" Height="642.5" Margin="30,126.5,0,0" VerticalAlignment="Top" Width="1562" Source="{Binding CurrentPage}"/>
-
-
-
+        <TextBlock HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" Text="FestiSpec" VerticalAlignment="Top" Width="300" FontSize="68" Foreground="Black" Margin="70,-15,0,0"/>
+        <Frame Name="MainFrame" Content="ApplicationFrame" HorizontalAlignment="Left" Height="678" Margin="0,91,0,0" VerticalAlignment="Top" Width="1592" Source="{Binding CurrentPage}"/>
+        <Image HorizontalAlignment="Left" Height="65" Margin="10,5,0,0" VerticalAlignment="Top" Width="70" Source="festispec_icon.png">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="festispec_icon.png"/>
+            </Image.OpacityMask>
+        </Image>
     </Grid>
 </Window>

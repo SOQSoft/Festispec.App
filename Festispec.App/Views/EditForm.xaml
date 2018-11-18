@@ -40,6 +40,5 @@ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         <Button Content="Verwijder huidige vraag" Margin="1322,57,105,550" Command="{Binding RemoveQuestionCommand}"/>
         <Button Content="▲" Margin="1271,57,238,550" Command="{Binding UpQuestionCommand}"/>
         <Button Content="▼" Margin="1220,57,289,550" Command="{Binding DownQuestionCommand}"/>
-
     </Grid>
 </Page>

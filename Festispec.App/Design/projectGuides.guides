@@ -5,8 +5,6 @@
       <GuideModels>
         <GuideModel>
           <Guides>
-            <Guide Alignment="Left" Position="30" />
-            <Guide Alignment="Left" Position="1570" />
             <Guide Alignment="Top" Position="85" />
             <Guide Alignment="Top" Position="125" />
           </Guides>

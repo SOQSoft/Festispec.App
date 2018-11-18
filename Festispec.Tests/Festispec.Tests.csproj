@@ -47,6 +47,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateUserViewModelTest.cs" />
     <Compile Include="FormOverviewViewModelTest.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>

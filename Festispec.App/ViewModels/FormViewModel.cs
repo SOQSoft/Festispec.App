@@ -20,7 +20,7 @@ namespace Festispec.App.ViewModels
     {
         public ObservableCollection<QuestionViewModel> Questions { get; set; }
         private Form _form;
-        private IFormsRepository formsRepository;
+        private IFormRepository formsRepository;
         public QuestionViewModel SelectedQuestion { get; set; }
         public ICommand AddQuestionCommand { get; set; }
         public ICommand RemoveQuestionCommand { get; set; }
@@ -32,7 +32,7 @@ namespace Festispec.App.ViewModels
         {
             formsRepository = new FormsTestRepository();
             _form = form;
-            Questions = new ObservableCollection<QuestionViewModel>(form.Question.OrderBy( o => o.OrderNr).Select(o => new QuestionViewModel(o, count++)));
+            Questions = new ObservableCollection<QuestionViewModel>(form.Questions.OrderBy( o => o.OrderNr).Select(o => new QuestionViewModel(o, count++)));
             SelectedQuestion = Questions.FirstOrDefault();
             AddQuestionCommand = new RelayCommand(AddQuestion);
             RemoveQuestionCommand = new RelayCommand(RemoveQuestion);
@@ -104,7 +104,9 @@ namespace Festispec.App.ViewModels
         }
         private void AddQuestion()
         {
-            Questions.Add(new QuestionViewModel(new Question(), count++));
+            Question q = new Question();
+            _form.Questions.Add(q);
+            Questions.Add(new QuestionViewModel(q, count++));
         }
 
         private void RemoveQuestion()
@@ -128,16 +130,5 @@ namespace Festispec.App.ViewModels
         }
 
         public Form ToModel() { return _form; }
-
-        public override bool Equals(object obj)
-        {
-            var model = obj as FormViewModel;
-            return model != null &&
-                   Id == model.Id;
-        }
-        public override int GetHashCode()
-        {
-            return 2108858624 + Id.GetHashCode();
-        }
     }
 }

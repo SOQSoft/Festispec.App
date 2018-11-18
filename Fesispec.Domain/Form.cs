@@ -11,6 +11,6 @@ namespace Festispec.Domain
         public string Name { get; set; }
         public bool IsTemplate { get; set; }
         public string Comments { get; set; }
-		public ICollection<Question> Question { get; set; } = new List<Question>();
+		public ICollection<Question> Questions { get; set; } = new List<Question>();
     }
 }
