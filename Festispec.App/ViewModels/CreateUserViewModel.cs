@@ -181,8 +181,8 @@ namespace Festispec.App.ViewModels
 		{
 			_random = new Random();
 			_roleRepo = new RoleTestRepository();
-			_employeeRepo = new EmployeeTestRepository();
-			_userRepo = new UserTestRepository();
+            _userRepo = new UserTestRepository();
+            _employeeRepo = new EmployeeTestRepository(_userRepo);
 			Roles = new ObservableCollection<RoleViewModel>(_roleRepo.GetAll().Select(r => new RoleViewModel(r)));
 			RegisterCommand = new RelayCommand(Register);
 			GeneratePasswordCommand = new RelayCommand(GeneratePassword);
@@ -236,7 +236,6 @@ namespace Festispec.App.ViewModels
 			};
 			if (_houseNumberSuffix != null) { employee.HouseNumberSuffix = (char) _houseNumberSuffix; }
             user.Employee = employee;
-            _userRepo.Add(user);
 			_employeeRepo.AddEmployee(employee);
             //TODO: Change to some page
 		}

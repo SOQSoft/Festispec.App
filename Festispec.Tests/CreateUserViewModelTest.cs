@@ -17,8 +17,8 @@ namespace Festispec.Tests
         public void CreateUserTest()
         {
             CreateUserViewModel vm = new CreateUserViewModel();
-            IEmployeeRepository employeeRepo = new EmployeeTestRepository();
             IUsersRepository userRepo = new UserTestRepository();
+            IEmployeeRepository employeeRepo = new EmployeeTestRepository(userRepo);
             IRoleRepository roleRepo = new RoleTestRepository();
 
             User user = new User()

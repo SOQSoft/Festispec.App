@@ -32,7 +32,7 @@ namespace Festispec.App.ViewModels
         {
             formsRepository = new FormsTestRepository();
             _form = form;
-            Questions = new ObservableCollection<QuestionViewModel>(form.Question.OrderBy( o => o.OrderNr).Select(o => new QuestionViewModel(o, count++)));
+            Questions = new ObservableCollection<QuestionViewModel>(form.Questions.OrderBy( o => o.OrderNr).Select(o => new QuestionViewModel(o, count++)));
             SelectedQuestion = Questions.FirstOrDefault();
             AddQuestionCommand = new RelayCommand(AddQuestion);
             RemoveQuestionCommand = new RelayCommand(RemoveQuestion);
