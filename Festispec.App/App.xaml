@@ -5,7 +5,7 @@
             <viewModels:ViewModelLocator xmlns:vm="clr-namespace:Festispec.App"
                              x:Key="Locator" />
             <Helpers:QuestionTypeToControlConverter x:Key="QuestionTypeConverter"/>
-
+            <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         </ResourceDictionary>
   </Application.Resources>
 </Application>

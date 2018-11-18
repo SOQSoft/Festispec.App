@@ -2,42 +2,34 @@ using System;
 using System.ComponentModel;
 using System.Windows.Input;
 using Festispec.App.Views;
+using Festispec.Domain;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 
 namespace Festispec.App.ViewModels
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        ///Festispec.App;component/Views/QuestionListHome.xaml
         private string _CurrentPage;
-        public string CurrentPage { get => _CurrentPage;  private set { _CurrentPage = value; RaisePropertyChanged(); } }
+        public string CurrentPage { get => _CurrentPage; private set { _CurrentPage = value; RaisePropertyChanged(); } }
         public ICommand TemplatePageBtn { get; set; }
+        public ICommand ManageUsersPageBtn { get; }
         public ICommand AddQuestion { get; set; }
+        private UserViewModel _user;
+        public bool IsAdmin { get => _user.LoggedIn && _user.Role == Roles.Admin; }
         public ICommand QuestionPageBtn { get; set; }
         public Uri DisplayPage { get; set; }
 
-        public MainViewModel()
+        public MainViewModel(UserViewModel user)
         {
+            _user = user;
             QuestionPageBtn = new RelayCommand(() => ChangePage(Pages.FormList));
             TemplatePageBtn = new RelayCommand(() => ChangePage(Pages.TemplateList));
-            //TODO: Page missing? Original page: CreateQuestion.xaml
-            //AddQuestion = new RelayCommand(() => ChangePage(Pages.CreateQuestion));
-            ChangePage(Pages.CreateUser);
+            ManageUsersPageBtn = new RelayCommand(() => ChangePage(Pages.CreateUser));
+
+            ChangePage(Pages.QuestionListHome);
         }
-        
+
         public void ChangePage(Pages page)
         {
             switch (page)

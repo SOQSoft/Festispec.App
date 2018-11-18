@@ -95,9 +95,9 @@
     <Compile Include="Repositories\IEmployeeRepository.cs" />
     <Compile Include="Repositories\IFormRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Repositories\IUsersRepository.cs" />
     <Compile Include="Repositories\RoleTestRepository.cs" />
     <Compile Include="ViewModels\CreateUserViewModel.cs" />
-    <Compile Include="Repositories\IUsersRepository.cs" />
     <Compile Include="Repositories\UserTestRepository.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\FormOverviewViewModel.cs" />
@@ -233,10 +233,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\festispec_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\festispec_icon.png" />
+    <Resource Include="Views\Images\festispec_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

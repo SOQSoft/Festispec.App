@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Festispec.Domain;
 
 namespace Festispec.App.Repositories
@@ -11,7 +7,9 @@ namespace Festispec.App.Repositories
     {
         void Add(User user);
         void Delete(User user);
-        void Update(User user);
         ICollection<User> GetAll();
+        User GetUser(string username, string password);
+        void InitialiseDate();
+        void Update(User user);
     }
 }
