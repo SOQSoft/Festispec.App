@@ -205,7 +205,7 @@ namespace Festispec.App.ViewModels
             if (string.IsNullOrWhiteSpace(Phone)) { messages.Add("Telefoonnummer is leeg."); }
             if (string.IsNullOrWhiteSpace(City)) { messages.Add("Stad is leeg."); }
             if (string.IsNullOrWhiteSpace(Street)) { messages.Add("Straat is leeg."); }
-            if (HouseNumber != 0) { messages.Add("Huisnummer is 0."); }
+            if (HouseNumber == 0) { messages.Add("Huisnummer is 0."); }
             ErrorMessage = string.Join("\n", messages.ToArray());
             return string.IsNullOrWhiteSpace(ErrorMessage);
         }

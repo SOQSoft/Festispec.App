@@ -23,7 +23,7 @@ namespace Festispec.App.Repositories
 				return;
 			init = true;
 
-			int id = 0;
+			int id = 1;
 
 			User user;
 
