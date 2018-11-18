@@ -13,6 +13,7 @@ namespace Festispec.Domain
         public string Description { get; set; }
         public QuestionType QuestionType { get; set; }
         public int? FormId { get; set; }
+        public int OrderNr { get; set; }
         public Form Form { get; set; }
         public ICollection<QuestionItem> QuestionItem { get; set; } = new List<QuestionItem>();
     }
