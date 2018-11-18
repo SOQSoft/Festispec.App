@@ -1,4 +1,4 @@
-﻿using Festispec.ApiClient;
+﻿/*using Festispec.ApiClient;
 
 using Festispec.Domain;
 using NUnit.Framework;
@@ -59,4 +59,4 @@ namespace Festispec.Tests.ClientApi
             Assert.IsTrue(true);
         }
     }
-}
+}*/
