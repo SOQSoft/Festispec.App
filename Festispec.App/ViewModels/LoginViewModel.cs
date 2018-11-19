@@ -17,43 +17,27 @@ namespace Festispec.App.ViewModels
     {
         public MainViewModel MainView;
         private string _username;
-        public string Username
-        {
-            get { return _username; }
-            set { _username = value; }
-        }
-
-        private string _password;
-        public string Password
-        {
-            get { return _password; }
-            set { _password = value; }
-        }
-
+        public string Username { get; set; }
+        public string Password { get; set; }
         private string _errorMessage;
-        public string ErrorMessage
-        {
-            get { return _errorMessage; }
-            set { _errorMessage = value; }
-        }
-        public ICommand Login { get; set; }
-        private UserTestRepository _users;
+        public string ErrorMessage { get => _errorMessage; set { _errorMessage = value; RaisePropertyChanged(); } }
 
-        public LoginViewModel()
+        public ICommand Login { get; set; }
+        private UserViewModel _userViewModel;
+        private UserTestRepository _userRepository;
+
+        public LoginViewModel(UserViewModel userViewModel)
         {
-            _users = new UserTestRepository();
+            _userViewModel = userViewModel;
+            _userRepository = new UserTestRepository();
             Login = new RelayCommand<Window>(LoginCommand);
         }
 
         public void LoginCommand(Window loginWindow)
         {
-            if(fieldsAreEmpty())
+            if (!fieldsAreEmpty() && _userRepository.GetUser(Username, Password) is User user && user != null)
             {
-                return;
-            }
-            if(isPasswordUsernameCombinationCorrect())
-            {
-                //TODO geef user door aan de mainviewmodel
+                _userViewModel.Login(user);
                 var window = new MainWindow();
                 loginWindow.Close();
                 window.ShowDialog();
@@ -61,36 +45,19 @@ namespace Festispec.App.ViewModels
             else
             {
                 ErrorMessage = "Gebruikersnaam of wachtwoord is incorrect";
-                RaisePropertyChanged("ErrorMessage");
             }
         }
 
         public bool fieldsAreEmpty()
         {
-            if (_username == null)
+            if (string.IsNullOrWhiteSpace(Username))
             {
                 ErrorMessage = "Gebruikersnaam is leeg, vul een gebruikersnaam in";
-                RaisePropertyChanged("ErrorMessage");
-                return true ;
-            }
-            if(_password == null)
-            {
-                ErrorMessage = "Wachtwoord is leeg, vul een wachtwoord in";
-                RaisePropertyChanged("ErrorMessage");
                 return true;
             }
-            return false;
-        }
-
-        public bool isPasswordUsernameCombinationCorrect()
-        {
-            User InputUser = _users.GetAll().FirstOrDefault(u => u.Username.Equals(_username));
-            if (InputUser == null)
+            if (string.IsNullOrWhiteSpace(Password))
             {
-                return false;
-            }
-            if(InputUser.Password.Equals(_password))
-            {
+                ErrorMessage = "Wachtwoord is leeg, vul een wachtwoord in";
                 return true;
             }
             return false;
