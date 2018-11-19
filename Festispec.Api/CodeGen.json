@@ -1,0 +1,16 @@
+{
+	"ApiSelections": {
+		"DataModelAssemblyNames": [
+			"CoreWebApi"
+		],
+		"CherryPickingMethods": 3
+	},
+
+	"ClientApiOutputs": {
+		"ClientLibraryProjectFolderName": "..\\Festispec.ClientApi",
+		"GenerateBothAsyncAndSync": false,
+
+		"CamelCase": true,
+		"ContentType": "application/json"
+	}
+}

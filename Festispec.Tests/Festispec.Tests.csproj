@@ -40,15 +40,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.11.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.11.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateUserViewModelTest.cs" />
-    <Compile Include="FormOverviewViewModelTest.cs" />
+    <Compile Include="ClientApi\FormCrudTest.cs" />
+    <Compile Include="ClientApi\Program.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,9 +62,9 @@
       <Project>{6AC69184-6F12-4765-8B35-DAB40E6B8FD7}</Project>
       <Name>Festispec.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Festispec.App\Festispec.App.csproj">
-      <Project>{A35974DE-1586-4686-9C77-542640F06EB0}</Project>
-      <Name>Festispec.App</Name>
+    <ProjectReference Include="..\Festispec.ClientApi\Festispec.ClientApi.csproj">
+      <Project>{5160DAC6-3975-4E60-9F9F-3722591ABA37}</Project>
+      <Name>Festispec.ClientApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

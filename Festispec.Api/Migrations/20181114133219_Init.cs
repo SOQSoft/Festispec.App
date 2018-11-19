@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Festispec.Database.Migrations
+namespace Festispec.Api.Migrations
 {
-    public partial class Initialize : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,7 +23,7 @@ namespace Festispec.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Question",
+                name: "Questions",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -35,9 +35,9 @@ namespace Festispec.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Question", x => x.Id);
+                    table.PrimaryKey("PK_Questions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Question_Forms_FormId",
+                        name: "FK_Questions_Forms_FormId",
                         column: x => x.FormId,
                         principalTable: "Forms",
                         principalColumn: "Id",
@@ -45,7 +45,7 @@ namespace Festispec.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "QuestionItem",
+                name: "QuestionItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -55,33 +55,33 @@ namespace Festispec.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_QuestionItem", x => x.Id);
+                    table.PrimaryKey("PK_QuestionItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_QuestionItem_Question_QuestionId",
+                        name: "FK_QuestionItems_Questions_QuestionId",
                         column: x => x.QuestionId,
-                        principalTable: "Question",
+                        principalTable: "Questions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Question_FormId",
-                table: "Question",
-                column: "FormId");
+                name: "IX_QuestionItems_QuestionId",
+                table: "QuestionItems",
+                column: "QuestionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_QuestionItem_QuestionId",
-                table: "QuestionItem",
-                column: "QuestionId");
+                name: "IX_Questions_FormId",
+                table: "Questions",
+                column: "FormId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "QuestionItem");
+                name: "QuestionItems");
 
             migrationBuilder.DropTable(
-                name: "Question");
+                name: "Questions");
 
             migrationBuilder.DropTable(
                 name: "Forms");
