@@ -22,17 +22,21 @@ namespace Festispec.App.Repositories
             if (init) { return; }
             else { init = true; }
 
+            var adminRole = Roles.Manager.ToRole();
+            var userRole = Roles.Inspecteur.ToRole();
+
+
             User user = new User();
-            user.Password = "test";
-            user.Username = "test1";
-            user.Role = new Role();
+            user.Password = "Admin";
+            user.Username = "Admin";
+            user.Role = adminRole;
             user.Employee = new Employee();
             Users.Add(user);
 
             user = new User();
-            user.Password = "a";
-            user.Username = "a";
-            user.Role = new Role();
+            user.Password = "User";
+            user.Username = "User";
+            user.Role = userRole;
             user.Employee = new Employee();
             Users.Add(user);
 
@@ -49,6 +53,11 @@ namespace Festispec.App.Repositories
             user.Role = new Role();
             user.Employee = new Employee();
             Users.Add(user);
+        }
+
+        public User GetUser(string username, string password)
+        {
+            return Users.FirstOrDefault(o => o.Username == username && o.Password == password);
         }
         public void Add(User user)
         {

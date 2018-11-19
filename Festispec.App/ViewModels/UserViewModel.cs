@@ -6,15 +6,22 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Festispec.Domain;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace Festispec.App.ViewModels
 {
-    class UserViewModel : ViewModelBase
+    public class UserViewModel : ViewModelBase
     {
         private User _user;
         public UserViewModel(User User)
         {
             _user = User;
+        }
+
+        [PreferredConstructor]
+        public UserViewModel()
+        {
+
         }
 
         public string UserName
@@ -37,16 +44,15 @@ namespace Festispec.App.ViewModels
             }
         }
 
-        public Role Role
+        public Roles Role
         {
-            get => _user.Role;
+            get => _user.Role.Roles;
             set
             {
-                _user.Role = value;
+                _user.Role = value.ToRole();
                 RaisePropertyChanged();
             }
         }
-
         public Employee Employee
         {
             get => _user.Employee;
@@ -56,5 +62,13 @@ namespace Festispec.App.ViewModels
                 RaisePropertyChanged();
             }
         }
+
+        public void Login(User user)
+        {
+            _user = user;
+            LoggedIn = true;
+        }
+
+        public bool LoggedIn { get; set; } = false;
     }
 }
