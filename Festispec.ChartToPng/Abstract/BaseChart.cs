@@ -72,7 +72,7 @@ namespace Festispec.ChartToPng.Abstract
             window.Height = 300;
             window.Opacity = 0.001;
             window.Show();
-            Chart.Update(true, true); //force chart redraw
+            Chart.Update(true, true);
             window.UpdateLayout();
 
             //Render Bitmap
@@ -95,16 +95,14 @@ namespace Festispec.ChartToPng.Abstract
         {
             FileInfo info = new FileInfo(path);
             if (!info.Exists) { info.Directory.Create(); }
-            Stream file = File.Create(path);
-            MemoryStream graph = CreatePNGStream();
-            byte[] graphBytes = graph.ToArray();
-            file.Write(graphBytes, 0, graphBytes.Length);
-            file.Flush();
 
-            file.Close();
-            graph.Close();
-            file.Dispose();
-            graph.Dispose();
+            using (Stream file = File.Create(path))
+            using (MemoryStream graph = CreatePNGStream())
+            {
+                byte[] graphBytes = graph.ToArray();
+                file.Write(graphBytes, 0, graphBytes.Length);
+                file.Flush();
+            }
         }
     }
 }
