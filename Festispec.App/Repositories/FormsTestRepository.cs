@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Festispec.App.Repositories
 {
-    public class FormsTestRepository : IFormsRepository
+    public class FormsTestRepository : IFormRepository
     {
         private static List<Form> Forms { get; set; } = new List<Form>();
         private static bool init = false;
@@ -29,7 +29,7 @@ namespace Festispec.App.Repositories
             Form form = new Form();
             form.Id = id++;
             form.Name = "pure aids";
-            form.Question.Add(new Question()
+            form.Questions.Add(new Question()
             {
                 Id = qid++,
                 FormId = form.Id,
@@ -37,7 +37,7 @@ namespace Festispec.App.Repositories
                 Text = "Wanneer kwamen koeien",
                 QuestionType = 0, // TODO: Adding enums back;
             });
-            form.Question.Add(new Question()
+            form.Questions.Add(new Question()
             {
                 Id = qid++,
                 FormId = form.Id,
@@ -45,7 +45,7 @@ namespace Festispec.App.Repositories
                 Text = "Wanneer kwamen koeie2n2",
                 QuestionType = 0, // TODO: Adding enums back;
             });
-            form.Question.Add(new Question()
+            form.Questions.Add(new Question()
             {
                 Id = qid++,
                 FormId = form.Id,
@@ -67,7 +67,7 @@ namespace Festispec.App.Repositories
             form = new Form();
             form.Id = id++;
             form.Name = "Festival jantje";
-            form.Question.Add(new Question()
+            form.Questions.Add(new Question()
             {
                 Id = qid++,
                 FormId = form.Id,
@@ -83,7 +83,7 @@ namespace Festispec.App.Repositories
             form.Id = id++;
             form.Name = "Template Pieter";
             form.IsTemplate = true;
-            form.Question.Add(new Question()
+            form.Questions.Add(new Question()
             {
                 Id = qid++,
                 FormId = form.Id,

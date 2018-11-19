@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Festispec.Api.Database;
+using Festispec.Database;
 using Festispec.Domain;
 
 namespace Festispec.Api.Controllers

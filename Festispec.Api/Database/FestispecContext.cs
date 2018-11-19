@@ -1,4 +1,7 @@
-﻿using Festispec.Domain;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using Festispec.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -38,6 +41,5 @@ namespace Festispec.Api.Database
         {
             optionsBuilder.UseSqlServer(@"Server=.;Database=Festispec.db;Trusted_Connection=True;");
         }
-
     }
 }

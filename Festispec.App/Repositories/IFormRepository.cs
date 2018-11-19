@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-
-using Festispec.Domain;
+﻿using Festispec.Domain;
+using System.Collections.Generic;
+using Festispec.Database.Models;
 
 namespace Festispec.App.Repositories
 {
-    public interface IFormsRepository
+    public interface IFormRepository
     {
         void Add(Form form);
         void Delete(Form form);

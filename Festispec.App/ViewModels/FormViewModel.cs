@@ -20,17 +20,51 @@ namespace Festispec.App.ViewModels
     {
         public ObservableCollection<QuestionViewModel> Questions { get; set; }
         private Form _form;
-        private IFormsRepository formsRepository;
+        private IFormRepository formsRepository;
         public QuestionViewModel SelectedQuestion { get; set; }
-        public ICommand AddQuestion { get; set; }
+        public ICommand AddQuestionCommand { get; set; }
+        public ICommand RemoveQuestionCommand { get; set; }
+        public ICommand UpQuestionCommand { get; set; }
+        public ICommand DownQuestionCommand { get; set; }
+
         private int count = 0;
         public FormViewModel(Form form)
         {
             formsRepository = new FormsTestRepository();
             _form = form;
-            Questions = new ObservableCollection<QuestionViewModel>(form.Question.Select(o => new QuestionViewModel(o, count++)));
+            Questions = new ObservableCollection<QuestionViewModel>(form.Questions.OrderBy( o => o.OrderNr).Select(o => new QuestionViewModel(o, count++)));
             SelectedQuestion = Questions.FirstOrDefault();
-            AddQuestion = new RelayCommand(addQuestion);
+            AddQuestionCommand = new RelayCommand(AddQuestion);
+            RemoveQuestionCommand = new RelayCommand(RemoveQuestion);
+            UpQuestionCommand = new RelayCommand(UpQuestion);
+            DownQuestionCommand = new RelayCommand(DownQuestion);
+
+        }
+
+        public void UpQuestion()
+        {
+            if (SelectedQuestion.OrderNr == Questions.Count - 1)
+                return;
+            var question = Questions.FirstOrDefault(o => o.OrderNr == SelectedQuestion.OrderNr + 1);
+            if (question != null)
+            {
+                question.OrderNr = SelectedQuestion.OrderNr;
+            }
+            SelectedQuestion.OrderNr += 1;
+            ReOrder();
+        }
+
+        public void DownQuestion()
+        {
+            if (SelectedQuestion.OrderNr == 0)
+                return;
+            var question = Questions.FirstOrDefault(o => o.OrderNr == SelectedQuestion.OrderNr - 1);
+            if (question != null)
+            {
+                question.OrderNr = SelectedQuestion.OrderNr;
+            }
+            SelectedQuestion.OrderNr -= 1;
+            ReOrder();
         }
         public int Id
         {
@@ -68,11 +102,33 @@ namespace Festispec.App.ViewModels
                 RaisePropertyChanged();
             }
         }
-        private void addQuestion()
+        private void AddQuestion()
         {
-            Questions.Add(new QuestionViewModel(new Question(), count++));
+            Question q = new Question();
+            _form.Questions.Add(q);
+            Questions.Add(new QuestionViewModel(q, count++));
         }
 
-		public Form ToModel() { return _form; }
-	}
+        private void RemoveQuestion()
+        {
+            if(Questions.Count != 1)
+            {
+                Questions.Remove(SelectedQuestion);
+                ReOrder();
+            }
+        }
+
+        public void ReOrder()
+        {
+            count = 0;
+            foreach (var question in Questions.OrderBy(o => o.OrderNr))
+            {
+                question.OrderNr = count++;
+            }
+            Questions = new ObservableCollection<QuestionViewModel>(Questions.OrderBy(o => o.OrderNr));
+            base.RaisePropertyChanged("Questions");
+        }
+
+        public Form ToModel() { return _form; }
+    }
 }

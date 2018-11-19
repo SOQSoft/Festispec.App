@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Festispec.Api.Database;
+using Festispec.Database;
 using Festispec.Domain;
 
 namespace Festispec.Api.Controllers
@@ -30,21 +30,21 @@ namespace Festispec.Api.Controllers
 
         // GET: api/Forms/5
         [HttpGet("{id}")]
-        public async Task<Form> GetForm([FromRoute] int id)
+        public async Task<IActionResult> GetForm([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
-                return null;
+                return BadRequest(ModelState);
             }
 
             var form = await _context.Forms.FindAsync(id);
 
             if (form == null)
             {
-                return null;
+                return NotFound();
             }
 
-            return form;
+            return Ok(form);
         }
 
         // PUT: api/Forms/5
@@ -86,7 +86,6 @@ namespace Festispec.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> PostForm([FromBody] Form form)
         {
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

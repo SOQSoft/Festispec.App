@@ -1,0 +1,19 @@
+﻿<Page x:Class="Festispec.App.Views.QuestionListHome"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Festispec.App.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="640" d:DesignWidth="1560"
+      Title="QuestionListHome">
+    <Grid Background="#FFA8A5A5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Left" Height="50" Margin="10,10,0,0" TextWrapping="Wrap" Text="Vragenlijsten" VerticalAlignment="Top" Width="215" FontSize="36"/>
+        <TextBox HorizontalAlignment="Left" Height="25" Margin="10,65,0,0" TextWrapping="Wrap" Text="Zoeken..." VerticalAlignment="Top" Width="205"/>
+        <DataGrid HorizontalAlignment="Left" Height="410" Margin="10,150,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="1540"/>
+    </Grid>
+</Page>

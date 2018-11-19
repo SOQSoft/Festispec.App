@@ -1,10 +1,12 @@
 ﻿using Festispec.App.Repositories;
+using Festispec.App.Views;
 using Festispec.Domain;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 
@@ -12,7 +14,7 @@ namespace Festispec.App.ViewModels
 {
     public class FormOverviewViewModel : ViewModelBase
     {
-        private readonly IFormsRepository _formRepository;
+        private readonly IFormRepository _formRepository;
 
         public ObservableCollection<FormViewModel> Forms { get; }
         public ObservableCollection<FormViewModel> Templates { get; }
@@ -45,7 +47,7 @@ namespace Festispec.App.ViewModels
 
         public bool CanEditOrRemove(bool isTemplate)
         {
-            return SelectedForm != null && ((SelectedForm.IsTemplate && Templates.Contains(SelectedForm)) || (!SelectedForm.IsTemplate && Forms.Contains(SelectedForm)));
+            return SelectedForm != null && ((isTemplate && Templates.Contains(SelectedForm)) || (!isTemplate && Forms.Contains(SelectedForm)));
         }
 
         public void Create(bool isTemplate)
@@ -58,11 +60,11 @@ namespace Festispec.App.ViewModels
 
             if (SelectedTemplate != null)
             {
-                foreach (QuestionViewModel q in SelectedTemplate.Questions) f.Question.Add(q.ToModel());
+                foreach (QuestionViewModel q in SelectedTemplate.Questions) f.Questions.Add(q.ToModel());
             }
             else
             {
-                f.Question.Add(new Question());
+                f.Questions.Add(new Question());
             }
             NewFormTitle = null;
             _formRepository.Add(f);
@@ -77,7 +79,7 @@ namespace Festispec.App.ViewModels
         }
         public void Edit(bool isTemplate)
         {
-            _viewModelLocator.Main.GoToEditFormPage();
+            _viewModelLocator.Main.ChangePage(Pages.EditForm);
         }
 
         public void Remove(bool isTemplate)
