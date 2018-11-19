@@ -16,7 +16,7 @@ namespace Festispec.App.ViewModels
         public ICommand ManageUsersPageBtn { get; }
         public ICommand AddQuestion { get; set; }
         private UserViewModel _user;
-        public bool IsAdmin { get => _user.LoggedIn && _user.Role == Roles.Admin; }
+        public bool IsAdmin { get => _user.LoggedIn && _user.Role == Roles.Manager; }
         public ICommand QuestionPageBtn { get; set; }
         public Uri DisplayPage { get; set; }
 

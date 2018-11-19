@@ -6,8 +6,8 @@ namespace Festispec.Domain
 {
     public enum Roles
     {
-        User,
-        Admin,
+        Inspecteur,
+        Manager,
     }
 
     public static class RolesExtention

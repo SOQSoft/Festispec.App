@@ -22,8 +22,8 @@ namespace Festispec.App.Repositories
             if (init) { return; }
             else { init = true; }
 
-            var adminRole = Roles.Admin.ToRole();
-            var userRole = Roles.User.ToRole();
+            var adminRole = Roles.Manager.ToRole();
+            var userRole = Roles.Inspecteur.ToRole();
 
 
             User user = new User();

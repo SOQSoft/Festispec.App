@@ -16,7 +16,7 @@ namespace Festispec.Domain
         public Role() { }
 
         [NotMapped]
-        public Roles Roles { get; set; } = Roles.User;
+        public Roles Roles { get; set; } = Roles.Inspecteur;
 
     }
 }
