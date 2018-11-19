@@ -1,0 +1,26 @@
+﻿<Window x:Class="ChartToPng.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChartToPng"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="520"
+        DataContext="{StaticResource Program}">
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="250"/>
+                <RowDefinition Height="250"/>
+            </Grid.RowDefinitions>
+            <ContentControl Grid.Row="0" Content="{Binding Chart0}" />
+            <ContentControl Grid.Row="1" Content="{Binding Chart1}" />
+            <ContentControl Grid.Row="2" Content="{Binding Chart2}" />
+        </Grid>
+    </ScrollViewer>
+</Window>
